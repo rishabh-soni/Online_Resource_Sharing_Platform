@@ -1,5 +1,5 @@
 """
-WSGI config for redource_sharing project.
+WSGI config for resource_sharing project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'redource_sharing.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'resource_sharing.settings')
 
 application = get_wsgi_application()

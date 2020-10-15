@@ -1,5 +1,5 @@
 """
-ASGI config for redource_sharing project.
+ASGI config for resource_sharing project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'redource_sharing.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'resource_sharing.settings')
 
 application = get_asgi_application()
