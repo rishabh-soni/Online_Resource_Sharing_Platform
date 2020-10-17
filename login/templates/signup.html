@@ -38,6 +38,20 @@
 					</span>
 
 
+					<div class="wrap-input100 validate-input" data-validate="Name is required">
+						<input class="input100" type="text" name="name">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Name</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Phone Number is required">
+						<input class="input100" type="text" name="Phone Number">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Phone Number</span>
+					</div>
+
+
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email">
 						<span class="focus-input100"></span>
@@ -50,6 +64,8 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
+
+
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						<div class="contact100-form-checkbox">
@@ -69,15 +85,15 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							Signup
 						</button>
 					</div>
 
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
-							Don't have an account?
-							<a href="#" >
-								Create one.
+							Already have an account?
+							<a href="{% url 'login' %}" >
+								Login.
 							</a>
 						</span>
 					</div>
