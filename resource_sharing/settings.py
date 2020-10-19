@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage',
     'login',
+    'accounts',
+    'authen.apps.AuthenConfig',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +134,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-LOGIN_REDIRECT_URL = '/homepage'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+AUTH_USER_MODEL = 'authen.CustomUser'
+
+

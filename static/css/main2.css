@@ -89,7 +89,7 @@ p {
 	color: #666666;
 	margin: 0px;
 	font-family: Montserrat-Regular;
-  font-size: 18px;
+  font-size: 16px;
   color: #999999;
   line-height: 1.2;
   display: block;
@@ -109,11 +109,10 @@ ul, li {
 input {
 	outline: none;
 	border: none;
-
   flex-wrap: wrap;
   align-items: flex-end;
-  width: 100%;
-  height: 70px;
+  width: 300px;
+  height: 55px;
   position: relative;
   border: 1px solid #e6e6e6;
   border-radius: 10px;
@@ -224,7 +223,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -249,7 +248,6 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  flex-direction: row-reverse;
 
 }
 
@@ -282,11 +280,11 @@ iframe {
 [ Form ]*/
 
 .login100-form {
-  width: 560px;
+  width: 900px;
   min-height: 100vh;
   display: block;
   background-color: #f7f7f7;
-  padding: 173px 55px 55px 55px;
+  padding: 55px 50px 55px 55px;
 }
 
 .login100-form-title {
@@ -296,7 +294,7 @@ iframe {
   font-size: 30px;
   color: #333333;
   line-height: 1.2;
-  text-align: center;
+
 }
 
 
@@ -501,7 +499,7 @@ input.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  width: 100%;
+  width: 300px;
   height: 50px;
   border-radius: 10px;
   background: #ebb523;
