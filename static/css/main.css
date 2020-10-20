@@ -258,8 +258,8 @@ iframe {
 .login100-more {
   width: calc(100% - 560px);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: 100% 160%;
+  background-position: top;
   position: relative;
   z-index: 1;
 }
@@ -273,7 +273,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0);
 }
 
 
@@ -530,7 +530,7 @@ input.input100 {
 
 @media (max-width: 992px) {
   .login100-form {
-    width: 50%;
+    width: 100%;
     padding-left: 30px;
     padding-right: 30px;
   }
