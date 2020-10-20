@@ -254,10 +254,10 @@ iframe {
 /*==================================================================
 [ login more ]*/
 .login100-more {
-  width: calc(100% - 560px);
+  width: calc(100% - 900px);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-size: 170% 100%;
+  background-position: right;
   position: relative;
   z-index: 1;
 }
@@ -271,7 +271,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0);
 }
 
 
