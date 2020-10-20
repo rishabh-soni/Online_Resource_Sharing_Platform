@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import *
 from django.contrib.auth import authenticate, login
 
@@ -24,7 +24,7 @@ def signup(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('home')
+                    return redirect('home')
     else:
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})
