@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>HoneyComb</title>
+    <link rel="icon" type="image/png" href="/static/images/icons/favicon.png"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -86,7 +87,7 @@ body {
 }
 .navbar a, .navbar a:active {
 	color: #888;
-	padding: 8px 20px;
+	padding: 5px 20px;
 	background: transparent;
 	line-height: normal;
 }
@@ -95,7 +96,7 @@ body {
 }
 .navbar .action-form {
 	width: 280px;
-	padding: 20px;
+	padding:20px;
 	left: auto;
 	right: 0;
 	font-size: 14px;
@@ -197,6 +198,9 @@ body {
 		width: 100%;
 	}
 }
+.dropdown:hover .dropdown-menu {display: block;}
+.dropdown-menu a:hover {background-color: #ddd;}
+
 
 
     </style>
@@ -207,11 +211,15 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 });
 
 
+
+
     </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="#" class="navbar-brand">Honey<b>Comb</b></a>
+
+    <a href="{% url 'home' %}" class="navbar-brand"><img src="/static/images/icons/icon.png"
+                                                         style="width:30px;height:40px;"> Honey<b>Comb</b></a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -230,7 +238,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                 </div>
             </div>
             <a href="#" class="nav-item nav-link">Sell</a>
-            <a href="#" class="nav-item nav-link">Contact</a>
+            <a href="#" class="nav-item nav-link">Contact Us</a>
         </div>
         <form class="navbar-form form-inline">
             <div class="input-group search-box">
@@ -242,9 +250,9 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                 </div>
             </div>
         </form>
-        <div class="navbar-nav ml-auto action-buttons">
+        <div class="navbar-nav ml-auto ">
             <!--<div class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Logout</a>
+                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Hi <u>{{ user.full_name }}!</u></a>
                 <div class="dropdown-menu action-form">
                     <form action="/examples/actions/confirmation.php" method="post">
                         <p class="hint-text">Sign in with your social media account</p>
@@ -266,10 +274,19 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     </form>
                 </div>
             </div>-->
+            <div class="navbar-nav">
             <div class="nav-item dropdown">
-                <a href="{% url 'logout' %}" class="btn btn-primary dropdown-toggle sign-up-btn">Logout</a>
-
+                <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="padding: 10px">Hi, {{ user.full_name }}</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Your Profile</a>
+                    <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                </div>
             </div>
+        </div>
+            <!--<div class="nav-item dropdown">
+                <a href="{% url 'logout' %}" class="btn btn-primary  sign-up-btn">Logout</a>
+
+            </div>-->
         </div>
     </div>
 </nav>
