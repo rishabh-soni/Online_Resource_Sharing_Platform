@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-  <p>Hi {{ user.full_name }}, Welcome to Honeycomb!</p>
+  <div style="width: 100%"><img src="/static/images/home_banner.jpg" style="width:100%"> </div>
 {% else %}
   <p>You are not logged in!</p>
   <a href="{% url 'login' %}">Log In</a> /
