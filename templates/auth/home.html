@@ -70,12 +70,10 @@ HoneyComb
                         <p class="card-text">₹ {{ x.price }}</p>
                         <a href="/buy/product/{{x.id}} ">
                             <style>
-                            .btn-outline-success{color:#ad7c2d; border-color:#ad7c2d; }
-                             .btn-outline-success:hover { background-color:#ebb523; color:#fcfcfc;border-color:#ebb523; }
-
-
+                            .btn-outline-warning{color:#ad7c2d; border-color:#ad7c2d; }
+                            .btn-outline-warning:hover { background-color:#ebb523; color:#fcfcfc;border-color:#ebb523; }
                             </style>
-                            <button id="apr{{x.id}}" class="btn btn-outline-success btn-sm">Buy Now
+                            <button id="apr{{x.id}}" class="btn btn-outline-warning btn-sm">Buy Now
                             </button>
                         </a>
                         <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-heart"></i></a>
