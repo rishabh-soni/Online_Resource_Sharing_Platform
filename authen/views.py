@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import *
 from django.contrib.auth import authenticate, login
-
+from products.models import Products
 from .forms import SignUpForm
 
 
 def home(request):
     user = request.user
+    pro = Products.objects.all()
     if user is not None:
         if user.is_active:
-            return render(request, 'auth/home.html')
+            return render(request, 'auth/home.html',{'products': pro})
         return HttpResponseRedirect('login')
 
 
