@@ -276,7 +276,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             </div>-->
             <div class="navbar-nav">
             <div class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="padding: 10px">Hi, {{ user.full_name }}</a>
+                <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="padding: 10px">Hi, {{user.full_name}}</a>
                 <div class="dropdown-menu">
                     <a href="#" class="dropdown-item">Your Profile</a>
                     <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
