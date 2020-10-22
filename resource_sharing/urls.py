@@ -28,5 +28,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'),
     path('buy/product/<int:myid>', prodviews.product),
-
+    path('aboutus/', views.aboutus, name='aboutus'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

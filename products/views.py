@@ -9,4 +9,4 @@ def product(request, myid):
     if user is not None:
         if user.is_active:
             return render(request, 'item.html', {'product': pro})
-        return HttpResponseRedirect('login')
+        return redirect('login')
