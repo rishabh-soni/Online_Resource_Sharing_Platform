@@ -10,7 +10,7 @@ def home(request):
     pro = Products.objects.all()
     if user is not None:
         if user.is_active:
-            return render(request, 'auth/home.html',{'products': pro})
+            return render(request, 'auth/home.html', {'products': pro})
         return HttpResponseRedirect('login')
 
 
