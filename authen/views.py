@@ -30,9 +30,18 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})
 
+
 def aboutus(request):
     user = request.user
     if user is not None:
         if user.is_active:
             return render(request, 'aboutus.html')
+        return redirect('login')
+
+
+def profile(request):
+    user = request.user
+    if user is not None:
+        if user.is_active:
+            return render(request, 'profile.html', {'user': user})
         return redirect('login')

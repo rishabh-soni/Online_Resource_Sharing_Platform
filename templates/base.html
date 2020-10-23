@@ -403,7 +403,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="padding: 10px">Hi,
                         {{user.full_name}}</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Your Profile</a>
+                        <a href="{% url 'profile'%}" class="dropdown-item">Your Profile</a>
                         <a href="#" class="dropdown-item">Your Wishlist</a>
                         <a href="#" class="dropdown-item">Your Orders</a>
                         <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
