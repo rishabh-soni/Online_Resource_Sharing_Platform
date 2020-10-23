@@ -338,6 +338,8 @@ footer {
 
 
 
+
+
     </style>
     <script>
 // Prevent dropdown menu from closing when click inside the form
@@ -353,9 +355,64 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 
 
 
+
+
     </script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a href="{% url 'home' %}" class="navbar-brand"><img src="/static/images/icons/icon.png"
+                                                         style="width:30px;height:40px;"> Honey<b>Comb</b></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+        <div class="navbar-nav">
+            <a href="{% url 'home'%}"
+               class="nav-item nav-link {% if request.path == '/' %} active {% endif %} ">Home</a>
+            <a href="{% url 'aboutus' %}"
+               class="nav-item nav-link {% if request.path == '/aboutus/' %} active {% endif %} ">About</a>
+            <div class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown"
+                   class="nav-item nav-link dropdown-toggle {% if '/buy/product/' in request.path %} active {% endif %}">Buy</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Books/Notes</a>
+                    <a href="#" class="dropdown-item">Stationery/Equipments</a>
+                    <a href="#" class="dropdown-item">Cycle</a>
+                    <a href="#" class="dropdown-item">Others</a>
+                </div>
+            </div>
+            <a href="#" class="nav-item nav-link">Sell</a>
+            <a href="#" class="nav-item nav-link">Contact Us</a>
+        </div>
+        <form class="navbar-form form-inline">
+            <div class="input-group search-box">
+                <input type="text" id="search" class="form-control" placeholder="Search here...">
+                <div class="input-group-append">
+					<span class="input-group-text">
+						<i class="material-icons">&#xE8B6;</i>
+					</span>
+                </div>
+            </div>
+        </form>
+        <div class="navbar-nav ml-auto ">
+            <div class="navbar-nav">
+                <div class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="padding: 10px">Hi,
+                        {{user.full_name}}</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Your Profile</a>
+                        <a href="#" class="dropdown-item">Your Wishlist</a>
+                        <a href="#" class="dropdown-item">Your Orders</a>
+                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
 {% block content %}
 {% endblock content %}
 <br><br>
@@ -382,7 +439,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             </div>
 
 
-            <div class="col-md-3 "style="text-align:center;"><br>
+            <div class="col-md-3 " style="text-align:center;"><br>
                 <h5> Follow Us</h5>
                 <div class="social">
                     <a href="#"><i class="fa-footer fa fa-facebook" aria-hidden="true"></i></a>
