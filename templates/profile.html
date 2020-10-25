@@ -633,24 +633,18 @@ background-color: #e2e8f0;
                         <div class="tab-pane" id="edit">
                             <form>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="Mark">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Last name</label>
-                                    <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="Jhonsan">
+                                        <input class="form-control" type="text" value="{{user.full_name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="email" value="mark@example.com">
+                                        <input class="form-control" type="email" value="{{user.email}}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <!--<div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="file">
@@ -676,24 +670,24 @@ background-color: #e2e8f0;
                                     <div class="col-lg-3">
                                         <input class="form-control" type="text" value="" placeholder="State">
                                     </div>
-                                </div>
+                                </div>-->
 
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Username</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="jhonsanmark">
+                                        <input class="form-control" type="text" value="{{user.username}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" value="11111122333">
+                                        <input class="form-control" type="password" value="12345678">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" value="11111122333">
+                                        <input class="form-control" type="password" value="12345678">
                                     </div>
                                 </div>
                                 <div class="form-group row">
