@@ -29,5 +29,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('buy/product/<int:myid>', prodviews.product),
     path('aboutus/', views.aboutus, name='aboutus'),
+    path('wishlist/<int:pid>', prodviews.wishlist),
     path('profile/', views.profile, name='profile'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

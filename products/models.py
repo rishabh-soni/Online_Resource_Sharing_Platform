@@ -9,3 +9,6 @@ class Products(models.Model):
     status = models.IntegerField()
     image_url = models.CharField(max_length=2083)
 
+class Wishlist(models.Model):
+    username = models.CharField(max_length=255)
+    pid = models.IntegerField()

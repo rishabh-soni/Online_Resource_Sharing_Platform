@@ -43,5 +43,5 @@ def profile(request):
     user = request.user
     if user is not None:
         if user.is_active:
-            return render(request, 'profile.html', {'user': user})
+            return render(request, 'profile.html')
         return redirect('login')

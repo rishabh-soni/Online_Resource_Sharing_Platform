@@ -29,7 +29,10 @@ HoneyComb
                             <button id="apr{{x.id}}" class="btn btn-outline-warning btn-sm">Buy Now
                             </button>
                         </a>
-                        <a href="" class="btn btn-outline-danger btn-sm"><i class="fa fa-heart"></i></a>
+                        <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
+                           {% csrf_token %}
+                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-heart"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
