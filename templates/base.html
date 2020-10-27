@@ -339,16 +339,6 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 	e.stopPropagation();
 });
 
-
-
-
-
-
-
-
-
-
-
     </script>
 </head>
 <body>
@@ -396,7 +386,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                         {{user.full_name}}</a>
                     <div class="dropdown-menu">
                         <a href="{% url 'profile'%}" class="dropdown-item">Your Profile</a>
-                        <a href="#" class="dropdown-item">Your Wishlist</a>
+                        <a href="{% url 'wishlist'%}" class="dropdown-item">Your Wishlist</a>
                         <a href="#" class="dropdown-item">Your Orders</a>
                         <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
                     </div>

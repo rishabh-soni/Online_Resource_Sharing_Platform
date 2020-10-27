@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block title %}
+Your Wishlist
+{% endblock title %}
+{% block head %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    box-shadow: none;
+
+}
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top:10px;
+}
+
+.carousel-indicators li {
+    border-radius: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: #404040;
+}
+.carousel-indicators li {
+    border-radius: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: #404040;
+}
+.carousel-indicators .active {
+    background-color: white;
+    max-width: 12px;
+    margin: 0 3px;
+    height: 12px;
+}
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+
+.btn {
+  margin-top: auto;
+}
+
+
+
+
+
+
+
+
+
+
+</style>
+{% endblock head %}
+{% block content %}
+<div class="container py-1">
+    <br>
+    <h2><b>Your Wishlist</b></h2>
+    <!-- Card Start -->
+    {% for x in product %}
+    <a href="/buy/product/{{x.id}}" style="text-decoration:none; color:#403f3c; font-size:1em;">
+        <div class="card" style="width: 60%;">
+            <div class="row">
+                <div class="col-md-7 px-3">
+                    <div class="card-block px-6">
+                        <article class="card-body p-1">
+                            <h3 class="title mb-3">{{x.name}}</h3>
+                            <p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+        {% if x.status %}
+        <span class="num">Sold Out</span>
+        {% else %}
+		<span class="currency">₹ </span><span class="num">{{x.price}}</span>
+        {% endif %}
+	</span>
+                            </p> <!-- price-detail-wrap .// -->
+                            <dl class="item-property">
+                                <dt>Description</dt>
+                                <dd><p>{{x.description}} </p></dd>
+                            </dl>
+                            <dl class="param param-feature">
+                                <dt>Seller Username</dt>
+                                <dd>{{x.seller}}</dd>
+                            </dl>  <!-- item-property-hor .// -->
+
+                            <a href="/buy/product/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
+                               style="background: #ebb523;border: none; "><i
+                                    class="fa fa-shopping-cart"></i> Buy now </a>
+                            <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
+                                {% csrf_token %}
+
+                                <button class="btn btn-lg btn-primary text-uppercase"
+                                        style="background: #dc3545;border: none; font-color:'white'"><i
+                                        class="fa fa-trash"></i> Delete
+                                </button>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+                <!-- Carousel start -->
+                <div class="col-md-5" style="">
+                    <a href="/buy/product/{{x.id}}">
+                        <img class="d-block" src='{{x.image_url}}' alt=""
+                             style="max-height:300px; height:auto; max-width:300px; position: absolute; top: 50%; transform: translate(-25%, -50%);">
+                    </a>>
+                </div>
+                <!-- End of carousel -->
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}
