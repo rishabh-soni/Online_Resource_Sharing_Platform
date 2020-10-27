@@ -3,14 +3,19 @@ from django.http import *
 from django.contrib.auth import authenticate, login
 from products.models import Products
 from .forms import SignUpForm
+from products.models import Wishlist
 
 
 def home(request):
     user = request.user
     pro = Products.objects.all()
+    wish_list = Wishlist.objects.filter(username=user.username)
+    ids = list()
+    for item in wish_list:
+        ids.append(item.pid)
     if user is not None:
         if user.is_active:
-            return render(request, 'auth/home.html', {'products': pro})
+            return render(request, 'auth/home.html', {'products': pro, 'ids': ids})
         return redirect('login')
 
 

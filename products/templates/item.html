@@ -183,9 +183,16 @@ Buy {{x.name}}
 
                     <a href="#myModal1" class="btn btn-lg btn-primary text-uppercase"
                        style="background: #ebb523;border: none; " data-toggle="modal"> Buy now </a>
-                    <a href="#" class="btn btn-lg btn-primary text-uppercase"
+                    {% if x.id not in ids %}
+                       <a href="/wishlist/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
                        style="background: #dc3545;border: none; font-color:'white'"> <i
                             class="fa fa-heart-o"></i> Add to Wishlist</a>
+                    {% else %}
+                        <a href="/wishlist/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
+                       style="background: #dc3545;border: none; font-color:'white'"> <i
+                            class="fa fa-heart"></i> Remove from Wishlist</a>
+                    {% endif %}
+
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->

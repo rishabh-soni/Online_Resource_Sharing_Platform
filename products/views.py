@@ -8,9 +8,13 @@ from django.contrib import messages
 def product(request, myid):
     user = request.user
     pro = Products.objects.filter(id=myid)
+    wish_list = Wishlist.objects.filter(username=user.username)
+    ids = list()
+    for item in wish_list:
+        ids.append(item.pid)
     if user is not None:
         if user.is_active:
-            return render(request, 'item.html', {'product': pro})
+            return render(request, 'item.html', {'product': pro, 'ids': ids })
         return redirect('login')
 
 

@@ -31,8 +31,11 @@ HoneyComb
                         </a>
                         <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
                            {% csrf_token %}
-
-                        <button class="btn btn-outline-danger btn-sm"><i class="fa fa-heart"></i></button>
+                        {% if x.id in ids %}
+                            <button class="btn btn-outline-danger btn-sm"><i class="fa fa-heart"></i></button>
+                        {% else %}
+                            <button class="btn btn-outline-danger btn-sm"><i class="fa fa-heart-o"></i></button>
+                        {% endif %}
                         </form>
                     </div>
                 </div>
