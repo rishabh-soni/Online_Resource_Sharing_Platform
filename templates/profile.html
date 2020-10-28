@@ -630,16 +630,19 @@ background-color: #e2e8f0;
                                 </tbody>
                             </table>
                         </div>
+
                         <div class="tab-pane" id="edit">
-                            <form>
+                            <h5><i class="fa fa-user"></i> General</h5>
+                            <form method="post" action="/profile/edit/general">
+                                {% csrf_token %}
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Full name</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="{{user.full_name}}">
+                                        <input class="form-control" type="text" value="{{user.full_name}}" id="full_name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                    <label class="col-lg-3 col-form-label form-control-label" id="email">Email</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="email" value="{{user.email}}">
                                     </div>
@@ -673,13 +676,29 @@ background-color: #e2e8f0;
                                 </div>-->
 
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                                    <label class="col-lg-3 col-form-label form-control-label" id="username">Username</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="text" value="{{user.username}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                    <label class="col-lg-3 col-form-label form-control-label" ></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                                    </div>
+                                </div>
+                            </form>
+                            <form method="post">
+                                <h5><i class="fa fa-lock"></i> Login and Security</h5>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Current Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="password" value="12345678">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">New Password</label>
                                     <div class="col-lg-9">
                                         <input class="form-control" type="password" value="12345678">
                                     </div>

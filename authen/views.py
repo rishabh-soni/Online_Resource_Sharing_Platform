@@ -50,3 +50,14 @@ def profile(request):
         if user.is_active:
             return render(request, 'profile.html')
         return redirect('login')
+
+
+def editprofile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user.email = form.email
+            user.save()
+            return render(request, 'profile.html')
+    return redirect('profile')
