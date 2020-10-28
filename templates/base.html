@@ -171,6 +171,9 @@ h4 {
 	position: relative;
 	top: 2px;
 }
+
+
+
 .or-seperator {
 	margin-top: 32px;
 	text-align: center;
@@ -366,7 +369,8 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <a href="#" class="dropdown-item">Others</a>
                 </div>
             </div>
-            <a href="#" class="nav-item nav-link">Sell</a>
+            <a href="{% url 'sell' %}"
+               class="nav-item nav-link {% if request.path == '/sell/' %} active {% endif %} ">Sell</a>
             <a href="#" class="nav-item nav-link">Contact Us</a>
         </div>
         <form class="navbar-form form-inline">

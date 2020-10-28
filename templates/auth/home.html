@@ -2,6 +2,13 @@
 {% block title %}
 HoneyComb
 {% endblock title %}
+{% block head %}
+<style>
+.z-depth-3 {
+    -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 0px 25px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 0px 25px 0 rgba(0,0,0,0.3);
+}</style>
+{% endblock head %}
 {% block content %}
 {% if user.is_authenticated %}
 <div style="width: 100%;margin-bottom:20px;"><img src="/static/images/home_banner.jpg" style="width:100%"></div>
@@ -10,8 +17,8 @@ HoneyComb
         <div style="margin-bottom:20px;"><h4><b>Recently Added</b></h4></div>
         <div class="row">
             {% for x in products %}
-            <div class="col-lg-3 mb-3">
-                <div class="card">
+            <div class="mb-3 z-depth-3" style="margin:10px 10px 10px 10px; width:260px">
+                <div >
                     <a href="/buy/product/{{x.id}} "><img src="{{ x.image_url }}"
                                                           style="width:auto; height:150px;display: block;
                                                           margin-left: auto;

@@ -33,4 +33,5 @@ urlpatterns = [
     path('wishlist/', prodviews.wishlist, name='wishlist'),
     path('profile/', views.profile, name='profile'),
     path('profile/edit/general', views.editprofile, name='editprofile'),
+    path('sell/', prodviews.sell, name='sell'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

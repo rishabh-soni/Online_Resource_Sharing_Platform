@@ -39,3 +39,11 @@ def wishlist(request):
         ids.append(item.pid)
     pro = Products.objects.filter(id__in=ids)
     return render(request, 'wishlist.html', {'wishlist': wish_list, 'product': pro})
+
+
+def sell(request):
+    user = request.user
+    if user is not None:
+        if user.is_active:
+            return render(request, 'sell.html')
+        return redirect('login')
