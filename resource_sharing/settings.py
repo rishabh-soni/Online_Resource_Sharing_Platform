@@ -138,4 +138,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'authen.CustomUser'
 
-
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

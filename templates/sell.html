@@ -478,7 +478,7 @@ background-color: #e2e8f0;
                                   <label><input type="radio" name="optradio" checked>Sell</label>
                                 </div>
                                 <div class="radio">
-                                  <label><input type="radio" name="optradio">Rent Montly</label>
+                                  <label><input type="radio" name="optradio">Rent Monthly</label>
                                 </div>
                                 <div class="radio disabled">
                                   <label><input type="radio" name="optradio">Rent Weekly</label>
@@ -502,6 +502,11 @@ background-color: #e2e8f0;
                                     </div>
                                 </div>
                             </form>
+                             <form method = "post" enctype="multipart/form-data">
+                             {% csrf_token %}
+                             {{ form.as_p }}
+                             <button type="submit">Upload</button>
+                             </form>
                         </div>
                     </div>
                 </div>

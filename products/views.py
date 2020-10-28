@@ -3,6 +3,7 @@ from django.http import *
 from .models import Products
 from .models import Wishlist
 from django.contrib import messages
+from .forms import *
 
 
 def product(request, myid):
@@ -14,7 +15,7 @@ def product(request, myid):
         ids.append(item.pid)
     if user is not None:
         if user.is_active:
-            return render(request, 'item.html', {'product': pro, 'ids': ids })
+            return render(request, 'item.html', {'product': pro, 'ids': ids})
         return redirect('login')
 
 
@@ -45,5 +46,15 @@ def sell(request):
     user = request.user
     if user is not None:
         if user.is_active:
-            return render(request, 'sell.html')
+            if request.method == 'POST':
+                form = Products(request.POST, request.FILES)
+
+                if form.is_valid():
+                    form.save()
+                    return redirect('sell')
+            else:
+                form = Products()
+                return render(request, 'sell.html', {'form': form})
+
         return redirect('login')
+
