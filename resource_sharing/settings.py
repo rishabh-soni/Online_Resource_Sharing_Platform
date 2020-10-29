@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authen.apps.AuthenConfig',
     'products.apps.ProductsConfig',
-
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

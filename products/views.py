@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import *
-from .models import Products
-from .models import Wishlist
+from .models import *
 from django.contrib import messages
 from .forms import *
 
@@ -47,14 +46,14 @@ def sell(request):
     if user is not None:
         if user.is_active:
             if request.method == 'POST':
-                form = Products(request.POST, request.FILES)
-
+                form = Item(request.POST, request.FILES)
                 if form.is_valid():
-                    form.save()
+                    item = form.save()
+                    item.seller = user.username
+                    item.save()
                     return redirect('sell')
             else:
-                form = Products()
+                form = Item()
                 return render(request, 'sell.html', {'form': form})
 
         return redirect('login')
-
