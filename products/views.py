@@ -41,6 +41,37 @@ def wishlist(request):
     return render(request, 'wishlist.html', {'wishlist': wish_list, 'product': pro})
 
 
+def yourads(request):
+    user = request.user
+    username = user.username
+    pro = Products.objects.filter(seller=username)
+    return render(request, 'yourads.html', {'product': pro})
+
+
+def deletead(request, pid):
+    user = request.user
+    username = user.username
+    Products.objects.filter(id=pid).filter(seller=username).delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+
+def editad(request, pid):
+    user = request.user
+    if request.method == 'POST':
+        editform = Edit_Item(request.POST)
+        if editform.is_valid():
+            item = Products.objects.filter(id=pid).first()
+            item.description = editform.cleaned_data.get('description')
+            item.sell = editform.cleaned_data.get('sell')
+            item.category = editform.cleaned_data.get('category')
+            item.save()
+    else:
+        pro = Products.objects.filter(id=pid).values().first()
+        editform = Edit_Item(initial=pro)
+
+    return render(request, 'editad.html', {'form': editform})
+
+
 def sell(request):
     user = request.user
     if user is not None:

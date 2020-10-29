@@ -53,7 +53,7 @@ background-color: #e2e8f0;
         <div class="col-lg-10">
             <div class="card z-depth-3">
                 <div class="card-body" style="">
-                    <div class="col-lg-12"><h4><i class="fa fa-bullhorn"></i></h4></div>
+                    <div class="col-lg-12"><h4><i class="fa fa-pencil"></i></h4></div>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="col-lg-12">
@@ -61,14 +61,14 @@ background-color: #e2e8f0;
                              <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">{{field.label}}</label>
                                     <div class="col-lg-9">
-                                         {{ field|attr:"class:form-control" }}
+                                         {{ field|attr:"class:form-control"}}
                                     </div>
                              </div>
                             {% endfor %}
                         </div>
                         <div class="col-lg-9">
                             <input type="reset" class="btn btn-secondary" value="Cancel">
-                            <input type="submit"  class="btn btn-primary" value="Post AD" style="background: #ebb523; border-color:#ebb523 ">
+                            <input type="submit"  class="btn btn-primary" value="Edit AD" style="background: #ebb523; border-color:#ebb523 ">
                         </div>
                     </form>
                 </div>
@@ -76,5 +76,4 @@ background-color: #e2e8f0;
         </div>
     </div>
 </div>
-
 {% endblock content %}

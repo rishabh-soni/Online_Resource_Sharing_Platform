@@ -2,10 +2,10 @@ from django.db import models
 from django import forms
 
 CATEGORY_CHOICES = [
-    ('books/notes', 'Books/Notes'),
-    ('stationery/equipments', 'Stationery/Equipments'),
-    ('cycles', 'Cycles'),
-    ('others', 'Others'),
+    ('Books/Notes', 'Books/Notes'),
+    ('Stationery/Equipments', 'Stationery/Equipments'),
+    ('Cycles', 'Cycles'),
+    ('Others', 'Others'),
 ]
 
 

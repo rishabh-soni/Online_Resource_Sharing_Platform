@@ -13,7 +13,7 @@ SELL_CHOICES = [
 class Item(forms.ModelForm):
     description = forms.Textarea
     price = models.FloatField()
-    category = forms.CharField(max_length=255, widget=forms.Select(choices=CATEGORY_CHOICES),)
+    category = forms.CharField(max_length=255, widget=forms.Select(choices=CATEGORY_CHOICES), )
     status = models.IntegerField(default=0)
     sell = forms.ChoiceField(choices=SELL_CHOICES)
     Img1 = models.ImageField(upload_to='images/', default='images/no-image.jpg')
@@ -25,12 +25,34 @@ class Item(forms.ModelForm):
         fields = ['name', 'description', 'sell', 'price', 'category', 'Img1', 'Img2', 'Img3']
         labels = {
             'name': _('Product Title'),
-            'description':_('Product Description'),
+            'description': _('Product Description'),
             'price': _('Selling/Rental Price'),
             'category': _('Product Category'),
             'Img1': _('Upload Image 1'),
             'Img2': _('Upload Image 2 (Optional)'),
             'Img3': _('Upload Image 3 (Optional)'),
+            'sell': _('Sell or Rent'),
+        }
+        widgets = {
+
+        }
+
+
+class Edit_Item(forms.ModelForm):
+    name = forms.CharField(max_length=255, disabled=True)
+    description = forms.Textarea
+    price = models.FloatField()
+    category = forms.CharField(max_length=255, widget=forms.Select(choices=CATEGORY_CHOICES), )
+    status = models.IntegerField(default=0)
+    sell = forms.ChoiceField(choices=SELL_CHOICES)
+
+    class Meta:
+        model = Products
+        fields = ['name', 'description', 'sell', 'price', 'category']
+        labels = {
+            'description': _('Edit Description'),
+            'price': _('Selling/Rental Price'),
+            'category': _('Change Category'),
             'sell': _('Sell or Rent'),
         }
         widgets = {
