@@ -100,4 +100,9 @@ def buy(request, category):
         pro = Products.objects.filter(category='Cycle')
     elif category == "others":
         pro = Products.objects.filter(category='Others')
-    return render(request, 'buy.html', {'product': pro})
+
+    wish_list = Wishlist.objects.filter(username=user.username)
+    ids = list()
+    for item in wish_list:
+       ids.append(item.pid)
+    return render(request, 'buy.html', {'products': pro,'ids': ids})
