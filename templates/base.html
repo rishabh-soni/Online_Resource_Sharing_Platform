@@ -364,10 +364,10 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                 <a href="#" data-toggle="dropdown"
                    class="nav-item nav-link dropdown-toggle {% if '/buy/product/' in request.path %} active {% endif %}">Buy</a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Books/Notes</a>
-                    <a href="#" class="dropdown-item">Stationery/Equipments</a>
-                    <a href="#" class="dropdown-item">Cycle</a>
-                    <a href="#" class="dropdown-item">Others</a>
+                    <a href="/buy/category/books" class="dropdown-item">Books/Notes</a>
+                    <a href="/buy/category/stationery" class="dropdown-item">Stationery/Equipments</a>
+                    <a href="/buy/category/cycle" class="dropdown-item">Cycle</a>
+                    <a href="/buy/category/others" class="dropdown-item">Others</a>
                 </div>
             </div>
             <a href="{% url 'sell' %}"

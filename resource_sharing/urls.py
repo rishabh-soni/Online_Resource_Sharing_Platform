@@ -37,6 +37,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('profile/edit/general', views.editprofile, name='editprofile'),
     path('sell/', prodviews.sell, name='sell'),
+    path('buy/category/<slug:category>', prodviews.buy, name='buy'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

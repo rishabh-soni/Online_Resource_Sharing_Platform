@@ -88,3 +88,16 @@ def sell(request):
                 return render(request, 'sell.html', {'form': form})
 
         return redirect('login')
+
+
+def buy(request, category):
+    user = request.user
+    if category == "books":
+        pro = Products.objects.filter(category='Books/Notes')
+    elif category == "stationery":
+        pro = Products.objects.filter(category='Stationery/Equipments')
+    elif category == "cycle":
+        pro = Products.objects.filter(category='Cycle')
+    elif category == "others":
+        pro = Products.objects.filter(category='Others')
+    return render(request, 'buy.html', {'product': pro})
