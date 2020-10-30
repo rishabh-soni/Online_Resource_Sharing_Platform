@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% block title %}
-    Buy/Rent
+Buy/Rent
 {% endblock title %}
 {% block head %}
-    <link href="/static/buy/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/buy/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/static/buy/css/price-range.css" rel="stylesheet">
-    <link href="/static/buy/css/animate.css" rel="stylesheet">
-    <link href="/static/buy/css/main.css" rel="stylesheet">
-    <link href="/static/buy/css/responsive.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="/static/buy/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="/static/buy/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="/static/buy/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/static/buy/images/ico/apple-touch-icon-57-precomposed.png">
+<link href="/static/buy/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/buy/css/font-awesome.min.css" rel="stylesheet">
+<link href="/static/buy/css/price-range.css" rel="stylesheet">
+<link href="/static/buy/css/animate.css" rel="stylesheet">
+<link href="/static/buy/css/main.css" rel="stylesheet">
+<link href="/static/buy/css/responsive.css" rel="stylesheet">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+      href="/static/buy/images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+      href="/static/buy/images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+      href="/static/buy/images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/static/buy/images/ico/apple-touch-icon-57-precomposed.png">
 {% endblock head %}
 
 {% block content %}
@@ -215,7 +215,7 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Featured Items</h2>
-                       {% for x in products %}
+                    {% for x in products %}
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
@@ -223,23 +223,21 @@
                                     <a href="/buy/product/{{x.id}} "><img src="/media/{{ x.Img1 }}" alt=""/></a>
                                     <h2>₹{{x.price}}</h2>
                                     <p>{{x.name}}</p>
-                                    <a href="/buy/product/{{x.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Buy Now
-                                        </a>
+                                    <a href="/buy/product/{{x.id}}" class="btn btn-default add-to-cart"><i
+                                            class="fa fa-shopping-cart"></i>Buy Now
+                                    </a>
                                 </div>
                             </div>
 
-                            <div class="choose" style="text-align:center"
-                                  <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
-                           {% csrf_token %}
-                        {% if x.id in ids %}
-                            <ul class="nav nav-pills nav-justified">
-                                    <li><button type="submit"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
-                                </ul>
-                        {% else %}
-                                  <ul class="nav nav-pills nav-justified">
-                                    <li><a type="submit"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                </ul>                        {% endif %}
-                        </form>
+                            <div class="choose" style="width:100%; text-align:center;">
+                                <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
+                                    {% csrf_token %}
+                                    {% if x.id in ids %}
+                                    <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i> Add to wishlist</button>
+                                    {% else %}
+                                    <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-trash"></i> Remove from wishlist</button>
+                                    {% endif %}
+                                </form>
 
                             </div>
                         </div>
@@ -247,7 +245,7 @@
                     </div>
 
 
-            {% endfor %}
+                    {% endfor %}
 
                 </div><!--features_items-->
 
