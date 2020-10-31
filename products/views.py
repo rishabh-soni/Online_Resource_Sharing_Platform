@@ -61,15 +61,17 @@ def editad(request, pid):
         editform = Edit_Item(request.POST)
         if editform.is_valid():
             item = Products.objects.filter(id=pid).first()
+            item.name = editform.cleaned_data.get('name')
             item.description = editform.cleaned_data.get('description')
             item.sell = editform.cleaned_data.get('sell')
+            item.price = editform.cleaned_data.get('price')
             item.category = editform.cleaned_data.get('category')
             item.save()
     else:
         pro = Products.objects.filter(id=pid).values().first()
         editform = Edit_Item(initial=pro)
-
-    return render(request, 'editad.html', {'form': editform})
+        return render(request, 'editad.html', {'form': editform})
+    return redirect('yourads')
 
 
 def sell(request):
@@ -92,7 +94,9 @@ def sell(request):
 
 def buy(request, category):
     user = request.user
-    if category == "books":
+    if category == "all":
+        pro = Products.objects.all()
+    elif category == "books":
         pro = Products.objects.filter(category='Books/Notes')
     elif category == "stationery":
         pro = Products.objects.filter(category='Stationery/Equipments')

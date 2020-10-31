@@ -8,7 +8,7 @@ from products.models import Wishlist
 
 def home(request):
     user = request.user
-    pro = Products.objects.all()
+    pro = Products.objects.order_by('-id')[:8]
     wish_list = Wishlist.objects.filter(username=user.username)
     ids = list()
     for item in wish_list:

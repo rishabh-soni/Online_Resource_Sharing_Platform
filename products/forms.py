@@ -39,7 +39,7 @@ class Item(forms.ModelForm):
 
 
 class Edit_Item(forms.ModelForm):
-    name = forms.CharField(max_length=255, disabled=True)
+    name = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'readonly':'readonly'}))
     description = forms.Textarea
     price = models.FloatField()
     category = forms.CharField(max_length=255, widget=forms.Select(choices=CATEGORY_CHOICES), )
@@ -50,6 +50,7 @@ class Edit_Item(forms.ModelForm):
         model = Products
         fields = ['name', 'description', 'sell', 'price', 'category']
         labels = {
+            'name': _('Edit Name'),
             'description': _('Edit Description'),
             'price': _('Selling/Rental Price'),
             'category': _('Change Category'),

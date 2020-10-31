@@ -9,13 +9,7 @@ Buy/Rent
 <link href="/static/buy/css/animate.css" rel="stylesheet">
 <link href="/static/buy/css/main.css" rel="stylesheet">
 <link href="/static/buy/css/responsive.css" rel="stylesheet">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-      href="/static/buy/images/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-      href="/static/buy/images/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-      href="/static/buy/images/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/static/buy/images/ico/apple-touch-icon-57-precomposed.png">
+
 {% endblock head %}
 
 {% block content %}
@@ -33,8 +27,8 @@ Buy/Rent
                     <div class="carousel-inner">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free E-Commerce Template</h2>
+                                <h1>Honey<span>Comb</span></h1>
+                                <h2>Sharing is now easy!</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
@@ -46,8 +40,8 @@ Buy/Rent
                         </div>
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>100% Responsive Design</h2>
+                                <h1>Honey<span>Comb</span></h1>
+                                <h2>Sharing is now easy!</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
@@ -60,8 +54,8 @@ Buy/Rent
 
                         <div class="item">
                             <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free Ecommerce Template</h2>
+                                <h1>Honey<span>Comb</span></h1>
+                                <h2>Sharing is now easy!</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
@@ -220,7 +214,11 @@ Buy/Rent
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <a href="/buy/product/{{x.id}} "><img src="/media/{{ x.Img1 }}" alt=""/></a>
+                                    <div style="height:300px;"><a
+                                            href="/buy/product/{{x.id}} "><img src="/media/{{ x.Img1 }}"
+                                                                               alt="" class="card-img-top"
+                                                                               style="width:auto max-height:300px; display: block; position: relative; top: 50%;transform: translateY(-50%);max-width:250px; margin-left: auto; margin-right: auto; margin-top:10px;"/></a>
+                                    </div>
                                     <h2>₹{{x.price}}</h2>
                                     <p>{{x.name}}</p>
                                     <a href="/buy/product/{{x.id}}" class="btn btn-default add-to-cart"><i
@@ -242,15 +240,10 @@ Buy/Rent
                                     </button>
                                     {% endif %}
                                 </form>
-
                             </div>
                         </div>
-
                     </div>
-
-
                     {% endfor %}
-
                 </div><!--features_items-->
 
                 <div class="recommended_items"><!--recommended_items-->
