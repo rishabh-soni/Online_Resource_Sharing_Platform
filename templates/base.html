@@ -373,7 +373,9 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             </div>
             <a href="{% url 'sell' %}"
                class="nav-item nav-link {% if request.path == '/sell/' %} active {% endif %} ">Sell</a>
-            <a href="#" class="nav-item nav-link">Contact Us</a>
+             <a href="{% url 'contactus' %}"
+               class="nav-item nav-link {% if request.path == '/contactus/' %} active {% endif %} ">Contact us</a>
+
         </div>
         <form class="navbar-form form-inline">
             <div class="input-group search-box">
