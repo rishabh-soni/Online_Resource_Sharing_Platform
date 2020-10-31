@@ -233,9 +233,13 @@ Buy/Rent
                                 <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
                                     {% csrf_token %}
                                     {% if x.id in ids %}
-                                    <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i> Add to wishlist</button>
+                                    <button type="submit" class="btn"><i
+                                            class="fa fa-trash"></i> Remove from wishlist
+                                    </button>
                                     {% else %}
-                                    <button type="submit"  class="btn btn-default add-to-cart"><i class="fa fa-trash"></i> Remove from wishlist</button>
+                                    <button type="submit" class="btn"><i
+                                            class="fa fa-plus-square"></i> Add to wishlist
+                                    </button>
                                     {% endif %}
                                 </form>
 

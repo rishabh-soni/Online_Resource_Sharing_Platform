@@ -97,7 +97,7 @@ def buy(request, category):
     elif category == "stationery":
         pro = Products.objects.filter(category='Stationery/Equipments')
     elif category == "cycle":
-        pro = Products.objects.filter(category='Cycle')
+        pro = Products.objects.filter(category='Cycles')
     elif category == "others":
         pro = Products.objects.filter(category='Others')
 
