@@ -12,3 +12,11 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = UserCreationForm.Meta.fields + ('full_name', 'phone_no', 'email',)
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=500, label="Name")
+    email = forms.EmailField(max_length=500, label="Email")
+    subject = forms.CharField(max_length=500, label="Subject")
+    message = forms.CharField(label='Message', widget=forms.Textarea(
+        attrs={'placeholder': 'Your Message Here'}))

@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import *
 from django.contrib.auth import authenticate, login
 from products.models import Products
-from .forms import SignUpForm
+from .forms import *
 from products.models import Wishlist
+from django.core.mail import send_mail
 
 
 def home(request):
@@ -62,10 +63,26 @@ def editprofile(request):
             return render(request, 'profile.html')
     return redirect('profile')
 
+
 def contactus(request):
     user = request.user
     if user is not None:
         if user.is_active:
-            return render(request, 'contact-us.html')
+            if request.method == 'POST':
+                form = ContactForm(request.POST)
+                if form.is_valid():
+                    name = form.cleaned_data.get("name")
+                    email = form.cleaned_data.get("email")
+                    message = form.cleaned_data.get("message")
+                    subject = form.cleaned_data.get("subject")
+                    message = name + " with the email, " + email + ", sent the following message:\n\n" + message
+                    send_mail(subject, message, 'honeycomb.iiti@gmail.com', ['honeycomb.iiti@gmail.com'])
+                    return redirect('contactus')
+                else:
+                    form = ContactForm()
+                    return redirect('home')
+            else:
+                form = ContactForm()
+                return render(request, 'contact-us.html', {'form': form})
         return redirect('login')
 
