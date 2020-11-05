@@ -12,11 +12,13 @@ def home(request):
     pro = Products.objects.order_by('-id')[:8]
     wish_list = Wishlist.objects.filter(username=user.username)
     ids = list()
+    reco1 = Products.objects.order_by('-id')[:3]
+    reco2 = Products.objects.order_by('-id')[3:6]
     for item in wish_list:
         ids.append(item.pid)
     if user is not None:
         if user.is_active:
-            return render(request, 'auth/home.html', {'products': pro, 'ids': ids})
+            return render(request, 'auth/home.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})
         return redirect('login')
 
 

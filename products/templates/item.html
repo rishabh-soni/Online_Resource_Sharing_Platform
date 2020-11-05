@@ -194,7 +194,7 @@ function myFunction(){
                         <dd>{{x.category}}</dd>
                     </dl>
                     <a href="#myModal1" class="btn btn-lg btn-primary text-uppercase"
-                       style="background: #FE980F;border: none; " data-toggle="modal"> Buy now </a>
+                       style="background: #FE980F;border: none; " data-toggle="modal">{% ifequal 'sell' x.sell %} Buy now{% else %}Rent Now{% endifequal %}</a>
                     {% if x.id not in ids %}
                     <a href="/wishlist/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
                        style="background: #dc3545;border: none; font-color:'white'"> <i
