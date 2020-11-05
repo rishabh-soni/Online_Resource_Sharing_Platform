@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import *
 from .models import *
 from django.contrib import messages
+from authen.models import *
 from .forms import *
-
+from django.urls import reverse
+from django.core.mail import send_mail
+from django.contrib import messages
 
 def product(request, myid):
     user = request.user
@@ -100,8 +103,12 @@ def buy(request, category):
         pro = Products.objects.filter(category='Books/Notes')
     elif category == "stationery":
         pro = Products.objects.filter(category='Stationery/Equipments')
-    elif category == "cycle":
-        pro = Products.objects.filter(category='Cycles')
+    elif category == "sports":
+        pro = Products.objects.filter(category='Sports, Fitness and Outdoors')
+    elif category == "electronics":
+        pro = Products.objects.filter(category='Electronics')
+    elif category == "household":
+        pro = Products.objects.filter(category='Household')
     elif category == "others":
         pro = Products.objects.filter(category='Others')
     reco1 = Products.objects.order_by('-id')[:3]
@@ -111,3 +118,21 @@ def buy(request, category):
     for item in wish_list:
         ids.append(item.pid)
     return render(request, 'buy.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})
+
+
+def sendrequest(request, myid):
+    user = request.user
+    if user is not None:
+        if user.is_active:
+            pro = Products.objects.filter(id=myid).first()
+            prodname = pro.name
+            seller = pro.seller
+            sellerinfo = CustomUser.objects.filter(username=seller).first()
+            email = sellerinfo.email
+            message = user.full_name + " has sent you a buy request for the product- " + prodname
+            notif = "We have notified "+sellerinfo.full_name + " about your request for the product- "+prodname+" You can also contact him through his Phone Number: "+sellerinfo.phone_no
+            send_mail("New buy request", message, 'honeycomb.iiti@gmail.com', [email])
+            send_mail("Seller notified", notif, 'honeycomb.iiti@gmail.com', [user.email])
+            return redirect('/buy/category/all')
+            #return redirect('home')
+        return redirect('login')

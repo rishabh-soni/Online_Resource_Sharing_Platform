@@ -3,8 +3,10 @@ from django import forms
 
 CATEGORY_CHOICES = [
     ('Books/Notes', 'Books/Notes'),
+    ('Household', 'Household'),
+    ('Electronics', 'Electronics'),
     ('Stationery/Equipments', 'Stationery/Equipments'),
-    ('Cycles', 'Cycles'),
+    ('Sports, Fitness and Outdoors', 'Sports, Fitness and Outdoors'),
     ('Others', 'Others'),
 ]
 
