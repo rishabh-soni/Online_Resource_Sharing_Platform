@@ -158,4 +158,5 @@ def search(request):
                     ids.append(item.pid)
                 return render(request, 'search.html',
                               {'products': result, 'ids': ids, 'reco1': reco1, 'reco2': reco2, 'search': search})
+            return render(request, 'search.html')
         return redirect('login')
