@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib import messages
 
+
 def product(request, myid):
     user = request.user
     pro = Products.objects.filter(id=myid)
@@ -130,9 +131,31 @@ def sendrequest(request, myid):
             sellerinfo = CustomUser.objects.filter(username=seller).first()
             email = sellerinfo.email
             message = user.full_name + " has sent you a buy request for the product- " + prodname
-            notif = "We have notified "+sellerinfo.full_name + " about your request for the product- "+prodname+" You can also contact him through his Phone Number: "+sellerinfo.phone_no
+            notif = "We have notified " + sellerinfo.full_name + " about your request for the product- " + prodname + " You can also contact him through his Phone Number: " + sellerinfo.phone_no
             send_mail("New buy request", message, 'honeycomb.iiti@gmail.com', [email])
             send_mail("Seller notified", notif, 'honeycomb.iiti@gmail.com', [user.email])
             return redirect('/buy/category/all')
-            #return redirect('home')
+            # return redirect('home')
+        return redirect('login')
+
+
+def search(request):
+    user = request.user
+    if user is not None:
+        if user.is_active:
+            if request.method == 'POST':
+                search = request.POST['search']
+                result = list()
+                words = search.split()
+                for x in words:
+                    result += Products.objects.filter(name__icontains=x) | Products.objects.filter(
+                        description__icontains=x) | Products.objects.filter(category__icontains=x)
+                wish_list = Wishlist.objects.filter(username=user.username)
+                ids = list()
+                reco1 = Products.objects.order_by('-id')[:3]
+                reco2 = Products.objects.order_by('-id')[3:6]
+                for item in wish_list:
+                    ids.append(item.pid)
+                return render(request, 'search.html',
+                              {'products': result, 'ids': ids, 'reco1': reco1, 'reco2': reco2, 'search': search})
         return redirect('login')

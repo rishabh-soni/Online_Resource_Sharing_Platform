@@ -29,6 +29,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('buy/product/<int:myid>', prodviews.product, name='item'),
     path('buy/sendrequest/<int:myid>', prodviews.sendrequest, name='request'),
+    path('buy/search/', prodviews.search, name='search'),
+    path('buy/category/<slug:category>', prodviews.buy, name='buy'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('wishlist/<int:pid>', prodviews.create_wishlist),
     path('wishlist/', prodviews.wishlist, name='wishlist'),
@@ -39,7 +41,7 @@ urlpatterns = [
     path('profile/edit/general', views.editprofile, name='editprofile'),
     path('sell/', prodviews.sell, name='sell'),
     path('contact-us/', views.contactus, name='contactus'),
-    path('buy/category/<slug:category>', prodviews.buy, name='buy'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-Buy/Rent
+Search Results
 {% endblock title %}
 {% block head %}
 <link href="/static/buy/css/bootstrap.min.css" rel="stylesheet">
@@ -11,86 +11,30 @@ Buy/Rent
 <link href="/static/buy/css/responsive.css" rel="stylesheet">
 <style>
     .product-image-wrapper:hover{
-        -webkit-box-shadow: 0 7px 7px 0 rgba(0,0,0,0.10),0 0px 15px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 7px 7px 0 rgba(0,0,0,0.10),0 0px 15px 0 rgba(0,0,0,0.3);
+        -webkit-box-shadow: 0 7px 0px 0 rgba(0,0,0,0.10),0 0px 15px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 7px 0px 0 rgba(0,0,0,0.10),0 0px 15px 0 rgba(0,0,0,0.3);
     }
 
+.z-depth-3 {
+    -webkit-box-shadow: 0 0px 7px 0 rgba(0,0,0,0.09),0 0px 20px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0px 7px 0 rgba(0,0,0,0.09),0 0px 20px 0 rgba(0,0,0,0.2);
+}
 
 
 
 
 </style>
 {% endblock head %}
-
 {% block content %}
-<section id="slider"><!--slider-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#slider-carousel" data-slide-to="1"></li>
-                        <li data-target="#slider-carousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-sm-6">
-                                <h1>Honey<span>Comb</span></h1>
-                                <h2>Setting up your room is now easy!</h2>
-                                <p>Forgot to buy some basic things for your hostel? Acquire used/extra mattresses, buckets, furniture, etc. from your seniors or friends. </p>
-                                <a href="/buy/category/household" ><button type="button" class="btn btn-default get">Browse Products</button></a>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="/static/buy/images/home/hostel1.jpg" class="img-responsive" alt="" style="width:auto max-height:400px; display: block; position: relative; top: 50%;transform: translateY(0%);max-width:400px; margin-left: auto; margin-right: auto; margin-top:10px;"/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1>Honey<span>Comb</span></h1>
-                                <h2>Sharing is now easy!</h2>
-                                <p>HoneyComb provides you a platform to share and sell your belongings among others in the community.</p>
-                                <a href="/buy/category/all" ><button type="button" class="btn btn-default get">Browse All Products</button></a>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="/static/buy/images/home/hostel2.jpg" class="img-responsive" alt="" style="width:auto max-height:400px; display: block; position: relative; top: 50%;transform: translateY(0%);max-width:400px; margin-left: auto; margin-right: auto; margin-top:10px;"/>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1>Honey<span>Comb</span></h1>
-                                <h2>Sharing is now easy!</h2>
-                                <p>Want to sell or rent something? Put up an AD here. </p>
-                                <a href="/sell" ><button type="button" class="btn btn-default get">Sell</button></a>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="/static/buy/images/home/hostel3.jpg" class="img-responsive" alt="" style="width:auto max-height:400px; display: block; position: relative; top: 50%;transform: translateY(0%);max-width:400px; margin-left: auto; margin-right: auto; margin-top:10px;"/>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/slider-->
-
+{% if products|length > 0 %}
+<br>
 <section>
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
                     <h2>Category</h2>
-                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                    <div class="panel-group category-products" id="accordian"><!--category-products-->
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"><a href="/buy/category/all">All Categories</a></h4>
@@ -113,12 +57,14 @@ Buy/Rent
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="/buy/category/stationery">Stationery/Equipments</a></h4>
+                                <h4 class="panel-title"><a href="/buy/category/stationery">Stationery/Equipments</a>
+                                </h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><a href="/buy/category/sports">Sports, Fitness and Outdoors</a></h4>
+                                <h4 class="panel-title"><a href="/buy/category/sports">Sports, Fitness and Outdoors</a>
+                                </h4>
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -141,8 +87,9 @@ Buy/Rent
             </div>
 
             <div class="col-sm-9 padding-right">
+
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Featured Items</h2>
+                    <h2 class="title">{{products|length}} Search results for "{{search}}"</h2>
                     {% for x in products %}
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
@@ -243,7 +190,21 @@ Buy/Rent
         </div>
     </div>
 </section>
-
+{% else %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 z-depth-3"
+                 style="text-align:center; margin-top:50px; padding:60px;">
+                <img src="/static/images/no-search-results.png" style="">
+                <h2>No search results found for "{{search}}"</h2>
+                <h4>Please check the spelling or try searching for something else</h4>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+{% endif %}
 <script src="/static/buy/js/jquery.js"></script>
 <script src="/static/buy/js/bootstrap.min.js"></script>
 <script src="/static/buy/js/jquery.scrollUp.min.js"></script>

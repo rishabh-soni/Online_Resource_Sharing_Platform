@@ -362,7 +362,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                class="nav-item nav-link {% if request.path == '/aboutus/' %} active {% endif %} ">About</a>
             <div class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown"
-                   class="nav-item nav-link dropdown-toggle {% if '/buy/product/' in request.path %} active {% endif %}">Buy</a>
+                   class="nav-item nav-link dropdown-toggle {% if '/buy/product/' in request.path or '/buy/category/' in request.path%} active {% endif %} ">Buy</a>
                 <div class="dropdown-menu">
                     <a href="/buy/category/all" class="dropdown-item">All Categories</a>
                     <a href="/buy/category/books" class="dropdown-item">Books/Notes</a>
@@ -379,9 +379,10 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                class="nav-item nav-link {% if request.path == '/contactus/' %} active {% endif %} ">Contact us</a>
 
         </div>
-        <form class="navbar-form form-inline">
+        <form class="navbar-form form-inline" method="post" action="/buy/search/">
+            {% csrf_token %}
             <div class="input-group search-box">
-                <input type="text" id="search" class="form-control" placeholder="Search here...">
+                <input type="text" id="search" name= "search" class="form-control" placeholder="Search here...">
                 <div class="input-group-append">
 					<span class="input-group-text">
 						<i class="material-icons">&#xE8B6;</i>
