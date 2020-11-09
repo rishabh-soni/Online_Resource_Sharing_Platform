@@ -37,7 +37,7 @@ HoneyComb
                         <p class="card-text">₹ {{ x.price }}</p>
                         <a href="/buy/product/{{x.id}} " style="text-decoration:none;">
                             <button id="apr{{x.id}}" class="btn btn-warning btn-sm">{% ifequal 'sell' x.sell %} Buy
-                                now{% else %}Rent Now{% endifequal %}
+                                now{% else %} Rent Now{% endifequal %}
                             </button>
                         </a>
                         <form action="/wishlist/{{x.id}}" method="post" style="display:inline">

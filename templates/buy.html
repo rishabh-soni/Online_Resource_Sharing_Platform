@@ -156,7 +156,8 @@ Buy/Rent
                                     <h2>₹{{x.price}}</h2>
                                     <p>{{x.name}}</p>
                                     <a href="/buy/product/{{x.id}}" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Buy Now
+                                            class="fa fa-shopping-cart"></i>{% ifequal 'sell' x.sell %} Buy
+                                now{% else %} Rent Now{% endifequal %}
                                     </a>
                                 </div>
                             </div>

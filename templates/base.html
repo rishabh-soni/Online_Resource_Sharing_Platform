@@ -428,7 +428,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                 <ul>
                     <li><a href="{% url 'home' %}" class="footer-link"> Home</a></li>
                     <li><a href="{% url 'aboutus' %}" class="footer-link"> About</a></li>
-                    <li><a href="#" class="footer-link"> Contact Us</a></li>
+                    <li><a href="{% url 'contactus' %}" class="footer-link"> Contact Us</a></li>
                 </ul>
             </div>
 
@@ -439,10 +439,10 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <a href="#"><i class="fa-footer fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa-footer fa fa-instagram" aria-hidden="true"></i></a>
                 </div>
-                <form class="form-footer my-2">
+                <!--<form class="form-footer my-2">
                     <input type="text" placeholder="search here..." name="search">
                     <input type="button" value="Go">
-                </form>
+                </form>-->
             </div>
         </div>
     </div>
