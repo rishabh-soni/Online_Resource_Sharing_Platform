@@ -20,3 +20,9 @@ class ContactForm(forms.Form):
     subject = forms.CharField(max_length=500, label="Subject")
     message = forms.CharField(label='Message', widget=forms.Textarea(
         attrs={'placeholder': 'Your Message Here'}))
+
+
+class EditForm(forms.Form):
+    full_name = forms.CharField(max_length=100)
+    phone_no = forms.CharField(max_length=100)
+    email = forms.EmailField(help_text='Required.')

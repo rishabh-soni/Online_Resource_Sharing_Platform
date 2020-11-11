@@ -31,6 +31,7 @@ urlpatterns = [
     path('buy/sendrequest/<int:myid>', prodviews.sendrequest, name='request'),
     path('buy/search/', prodviews.search, name='search'),
     path('buy/category/<slug:category>', prodviews.buy, name='buy'),
+    path('buy/confirm/<int:pid>', prodviews.confirm, name='confirm'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('wishlist/<int:pid>', prodviews.create_wishlist),
     path('wishlist/', prodviews.wishlist, name='wishlist'),
@@ -39,6 +40,7 @@ urlpatterns = [
     path('yourads/edit/<int:pid>', prodviews.editad),
     path('profile/', views.profile, name='profile'),
     path('profile/edit/general', views.editprofile, name='editprofile'),
+    path('profile/edit/password', views.editpassword, name='editpassword'),
     path('sell/', prodviews.sell, name='sell'),
     path('contact-us/', views.contactus, name='contactus'),
 

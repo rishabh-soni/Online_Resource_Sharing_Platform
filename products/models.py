@@ -27,3 +27,16 @@ class Products(models.Model):
 class Wishlist(models.Model):
     username = models.CharField(max_length=255)
     pid = models.IntegerField()
+
+
+class Requests(models.Model):
+    buyer = models.CharField(max_length=255)
+    seller = models.CharField(max_length=255)
+    pid = models.IntegerField()
+
+
+class Transaction(models.Model):
+    buyer = models.CharField(max_length=255)
+    seller = models.CharField(max_length=255)
+    pid = models.IntegerField()
+    pname = models.CharField(max_length=255)

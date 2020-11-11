@@ -22,7 +22,7 @@ audio:not([controls]) {
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Varela Round', sans-serif;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%
 }
@@ -72,7 +72,7 @@ mark {
 }
 
 code, kbd, pre, samp {
-    font-family: monospace, serif;
+    font-family: 'Varela Round', sans-serif;
     font-size: 1em
 }
 
@@ -128,7 +128,7 @@ legend {
 
 button, input, select, textarea {
     margin: 0;
-    font-family: inherit;
+    font-family: 'Varela Round', sans-serif;
     font-size: 100%
 }
 
@@ -255,7 +255,7 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     font-size: 14px;
     line-height: 1.428571429;
     color: #333;
@@ -263,7 +263,7 @@ body {
 }
 
 input, button, select, textarea {
-    font-family: inherit;
+    font-family: 'Varela Round', sans-serif;
     font-size: inherit;
     line-height: inherit
 }
@@ -334,7 +334,7 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Varela Round', sans-serif;
     font-weight: 500;
     line-height: 1.1;
     color: inherit
@@ -572,7 +572,7 @@ blockquote {
 }
 
 blockquote p {
-    font-size: 17.5px;
+    font-size: 1em;
     font-weight: 300;
     line-height: 1.25
 }
@@ -621,7 +621,7 @@ address {
 }
 
 code, kbd, pre, samp {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+    font-family: 'Varela Round', sans-serif;
 }
 
 code {
@@ -1742,7 +1742,7 @@ select[multiple], select[size] {
 }
 
 select optgroup {
-    font-family: inherit;
+    font-family: 'Varela Round', sans-serif;;
     font-size: inherit;
     font-style: inherit
 }
@@ -2342,7 +2342,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 @font-face {
-    font-family: 'Glyphicons Halflings';
+    font-family: 'Varela Round', sans-serif;
     src: url('../fonts/glyphicons-halflings-regular.eot');
     src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg')
 }
@@ -2351,7 +2351,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     position: relative;
     top: 1px;
     display: inline-block;
-    font-family: 'Glyphicons Halflings';
+    font-family: 'Varela Round', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-style: normal;
     font-weight: normal;
@@ -5892,7 +5892,7 @@ button.close {
     height: 20px;
     margin-top: -10px;
     margin-left: -10px;
-    font-family: serif
+    font-family: 'Varela Round', sans-serif;
 }
 
 .carousel-control .icon-prev:before {

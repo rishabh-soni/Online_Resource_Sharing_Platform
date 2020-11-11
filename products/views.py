@@ -7,6 +7,7 @@ from .forms import *
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.db.models import Count
 
 
 def product(request, myid):
@@ -49,7 +50,13 @@ def yourads(request):
     user = request.user
     username = user.username
     pro = Products.objects.filter(seller=username)
-    return render(request, 'yourads.html', {'product': pro})
+    requests = Requests.objects.filter(seller=username)
+    count = Requests.objects.values('pid').annotate(pcount=Count('pid'))
+    prolist = list()
+    for x in count:
+        if x['pcount'] > 0:
+            prolist.append(x['pid'])
+    return render(request, 'yourads.html', {'product': pro, 'requests': requests, 'prolist': prolist})
 
 
 def deletead(request, pid):
@@ -134,9 +141,25 @@ def sendrequest(request, myid):
             notif = "We have notified " + sellerinfo.full_name + " about your request for the product- " + prodname + " You can also contact him through his Phone Number: " + sellerinfo.phone_no
             send_mail("New buy request", message, 'honeycomb.iiti@gmail.com', [email])
             send_mail("Seller notified", notif, 'honeycomb.iiti@gmail.com', [user.email])
+            requestp = Requests(pid=myid, buyer=user.username, seller=seller)
+            requestp.save()
             return redirect('/buy/category/all')
             # return redirect('home')
         return redirect('login')
+
+
+def confirm(request, pid):
+    user = request.user
+    if request.method == 'POST':
+        seller = user.username
+        buyer = request.POST['buyer']
+        pro = Products.objects.filter(id=pid).first()
+        pro.status = 1
+        pro.save()
+        transaction = Transaction(seller=seller, buyer=buyer, pid=pid, pname=pro.name)
+        transaction.save()
+        Requests.objects.filter(pid=pid).delete()
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
 def search(request):

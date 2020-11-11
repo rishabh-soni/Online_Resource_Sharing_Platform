@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import *
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from products.models import Products
 from .forms import *
 from products.models import Wishlist
 from django.core.mail import send_mail
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 def home(request):
@@ -51,18 +54,48 @@ def profile(request):
     user = request.user
     if user is not None:
         if user.is_active:
-            return render(request, 'profile.html')
+            passform = PasswordChangeForm(request.user)
+            profileform = EditForm()
+            return render(request, 'profile.html', {'profileform': profileform, 'passform': passform})
         return redirect('login')
 
 
 def editprofile(request):
     user = request.user
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = EditForm(request.POST)
         if form.is_valid():
-            user.email = form.email
+            user.email = form.cleaned_data.get("email")
+            user.full_name = form.cleaned_data.get("full_name")
+            user.phone_no = form.cleaned_data.get("phone_no")
             user.save()
-            return render(request, 'profile.html')
+            passform = PasswordChangeForm(request.user)
+            profileform = EditForm()
+            messages.info(request, 'Your profile has been changed successfully!')
+            return render(request, 'profile.html', {'profileform': profileform, 'passform': passform})
+        else:
+            passform = PasswordChangeForm(request.user)
+            profileform = EditForm()
+            messages.info(request, 'Check for any errors and try again.')
+            return render(request, 'profile.html', {'profileform': profileform, 'passform': passform})
+    return redirect('profile')
+
+
+def editpassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            passform = PasswordChangeForm(request.user)
+            profileform = EditForm()
+            messages.info(request, 'Password has been changed successfully!')
+            return render(request, 'profile.html', {'profileform': profileform, 'passform': passform})
+        else:
+            passform = PasswordChangeForm(request.user)
+            profileform = EditForm()
+            messages.info(request, 'Check for any errors and try again.')
+            return render(request, 'profile.html', {'profileform': profileform, 'passform': passform})
     return redirect('profile')
 
 
