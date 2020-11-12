@@ -12,8 +12,8 @@ from django.db.models import Count
 
 def product(request, myid):
     user = request.user
-    pro = Products.objects.filter(id=myid)
-    wish_list = Wishlist.objects.filter(username=user.username)
+    pro = Products.objects.filter(id=myid).filter(status=0)
+    wish_list = Wishlist.objects.filter(username=user.username).filter(status=0)
     ids = list()
     for item in wish_list:
         ids.append(item.pid)
@@ -42,7 +42,7 @@ def wishlist(request):
     ids = list()
     for item in wish_list:
         ids.append(item.pid)
-    pro = Products.objects.filter(id__in=ids)
+    pro = Products.objects.filter(id__in=ids).filter(status=0)
     return render(request, 'wishlist.html', {'wishlist': wish_list, 'product': pro})
 
 
@@ -57,6 +57,17 @@ def yourads(request):
         if x['pcount'] > 0:
             prolist.append(x['pid'])
     return render(request, 'yourads.html', {'product': pro, 'requests': requests, 'prolist': prolist})
+
+
+def yourorders(request):
+    user = request.user
+    username = user.username
+    orders = Transaction.objects.filter(buyer=username)
+    ids = list()
+    for x in orders:
+        ids.append(x.pid)
+    pro = Products.objects.filter(id__in=ids)
+    return render(request, 'yourorders.html', {'product': pro})
 
 
 def deletead(request, pid):
@@ -106,21 +117,21 @@ def sell(request):
 def buy(request, category):
     user = request.user
     if category == "all":
-        pro = Products.objects.all()
+        pro = Products.objects.all().filter(status=0)
     elif category == "books":
-        pro = Products.objects.filter(category='Books/Notes')
+        pro = Products.objects.filter(category='Books/Notes').filter(status=0)
     elif category == "stationery":
-        pro = Products.objects.filter(category='Stationery/Equipments')
+        pro = Products.objects.filter(category='Stationery/Equipments').filter(status=0)
     elif category == "sports":
-        pro = Products.objects.filter(category='Sports, Fitness and Outdoors')
+        pro = Products.objects.filter(category='Sports, Fitness and Outdoors').filter(status=0)
     elif category == "electronics":
-        pro = Products.objects.filter(category='Electronics')
+        pro = Products.objects.filter(category='Electronics').filter(status=0)
     elif category == "household":
-        pro = Products.objects.filter(category='Household')
+        pro = Products.objects.filter(category='Household').filter(status=0)
     elif category == "others":
-        pro = Products.objects.filter(category='Others')
-    reco1 = Products.objects.order_by('-id')[:3]
-    reco2 = Products.objects.order_by('-id')[3:6]
+        pro = Products.objects.filter(category='Others').filter(status=0)
+    reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
+    reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
     wish_list = Wishlist.objects.filter(username=user.username)
     ids = list()
     for item in wish_list:
@@ -172,11 +183,11 @@ def search(request):
                 words = search.split()
                 for x in words:
                     result += Products.objects.filter(name__icontains=x) | Products.objects.filter(
-                        description__icontains=x) | Products.objects.filter(category__icontains=x)
+                        description__icontains=x) | Products.objects.filter(category__icontains=x).filter(status=0)
                 wish_list = Wishlist.objects.filter(username=user.username)
                 ids = list()
-                reco1 = Products.objects.order_by('-id')[:3]
-                reco2 = Products.objects.order_by('-id')[3:6]
+                reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
+                reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
                 for item in wish_list:
                     ids.append(item.pid)
                 return render(request, 'search.html',

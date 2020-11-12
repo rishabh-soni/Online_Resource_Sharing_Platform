@@ -34,6 +34,7 @@ urlpatterns = [
     path('buy/confirm/<int:pid>', prodviews.confirm, name='confirm'),
     path('aboutus/', views.aboutus, name='aboutus'),
     path('wishlist/<int:pid>', prodviews.create_wishlist),
+    path('yourorders/', prodviews.yourorders, name='yourorders'),
     path('wishlist/', prodviews.wishlist, name='wishlist'),
     path('yourads/', prodviews.yourads, name='yourads'),
     path('yourads/<int:pid>', prodviews.deletead),

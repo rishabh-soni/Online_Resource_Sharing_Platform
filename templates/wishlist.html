@@ -3,12 +3,12 @@
 Your Wishlist
 {% endblock title %}
 {% block head %}
-<link href="/static/buy/css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="/static/buy/css/bootstrap.min.css" rel="stylesheet">
 <link href="/static/buy/css/font-awesome.min.css" rel="stylesheet">
 <link href="/static/buy/css/price-range.css" rel="stylesheet">
 <link href="/static/buy/css/animate.css" rel="stylesheet">
 <link href="/static/buy/css/main.css" rel="stylesheet">
-<link href="/static/buy/css/responsive.css" rel="stylesheet">
+<link href="/static/buy/css/responsive.css" rel="stylesheet">-->
 <style>
 
 .card-block {
@@ -67,56 +67,9 @@ Your Wishlist
 
 </style>
 {% endblock head %}
-{% block content %}
+{% block content %}\
 <br>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="left-sidebar">
-                <h2>Category</h2>
-                <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/all">All Categories</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/books">Books/Notes</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/household">Household</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/electronics">Electronics</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/stationery">Stationery/Equipments</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/sports">Sports, Fitness and Outdoors</a></h4>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"><a href="/buy/category/others">Others</a></h4>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-sm-9 padding-right">
-            <div class="container py-1">
+<div class="container py-1">
                 <h2><b>Your Wishlist</b></h2>
                 <!-- Card Start -->
                 {% for x in product %}
@@ -173,7 +126,112 @@ Your Wishlist
                 </a>
                 {% endfor %}
             </div>
+
+<!--<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2>Category</h2>
+                <div class="panel-group category-products" id="accordian">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/all">All Categories</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/books">Books/Notes</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/household">Household</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/electronics">Electronics</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/stationery">Stationery/Equipments</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/sports">Sports, Fitness and Outdoors</a></h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="/buy/category/others">Others</a></h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-9 padding-right">
+            <div class="container py-1">
+                <h2><b>Your Wishlist</b></h2>
+
+                {% for x in product %}
+                <a href="/buy/product/{{x.id}}" style="text-decoration:none; color:#403f3c; font-size:1em;">
+                    <div class="card" style="width: 60%;">
+                        <div class="row">
+                            <div class="col-md-7 px-3">
+                                <div class="card-block px-6">
+                                    <article class="card-body p-1">
+                                        <h3 class="title mb-3">{{x.name}}</h3>
+                                        <p class="price-detail-wrap">
+                                            <span class="price h3 text-warning">
+                                                {% if x.status %}
+                                                <span class="num">Sold Out</span>
+                                                {% else %}
+                                                <span class="currency">₹ </span><span class="num">{{x.price}}</span>
+                                                {% endif %}
+                                            </span>
+                                        </p>
+                                        <dl class="item-property">
+                                            <dt>Description</dt>
+                                            <dd><p>{{x.description}} </p></dd>
+                                        </dl>
+                                        <dl class="param param-feature">
+                                            <dt>Seller Username</dt>
+                                            <dd>{{x.seller}}</dd>
+                                        </dl>
+
+                                        <a href="/buy/product/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
+                                           style="background: #FE980F;border: none; "><i
+                                                class="fa fa-shopping-cart"></i>{% ifequal 'sell' x.sell %} Buy
+                                            now{% else %} Rent Now{% endifequal %} </a>
+                                        <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
+                                            {% csrf_token %}
+
+                                            <button class="btn btn-lg btn-primary text-uppercase"
+                                                    style="background: #dc3545;border: none; font-color:'white'"><i
+                                                    class="fa fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5" style="">
+                                <a href="/buy/product/{{x.id}}">
+                                    <img class="d-block" src='/media/{{x.Img1}}' alt=""
+                                         style="max-height:300px; height:auto; max-width:300px; position: absolute; top: 50%; transform: translate(-25%, -50%);">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
+</div>-->
 {% endblock content %}

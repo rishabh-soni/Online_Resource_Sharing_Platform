@@ -14,11 +14,11 @@ def home(request):
     user = request.user
     if user is not None:
         if user.is_active:
-            pro = Products.objects.order_by('-id')[:8]
+            pro = Products.objects.order_by('-id').filter(status=0)[:8]
             wish_list = Wishlist.objects.filter(username=user.username)
             ids = list()
-            reco1 = Products.objects.order_by('-id')[:3]
-            reco2 = Products.objects.order_by('-id')[3:6]
+            reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
+            reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
             for item in wish_list:
                 ids.append(item.pid)
             return render(request, 'auth/home.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})

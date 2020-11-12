@@ -117,11 +117,13 @@ Buy {{x.name}}
 
 
 
+
 </style>
 <script>
 function myFunction(){
     $("#myModal2").modal();
 }
+
 
 
 </script>
@@ -193,8 +195,13 @@ function myFunction(){
                         <dt>Product Category</dt>
                         <dd>{{x.category}}</dd>
                     </dl>
+                    {% if x.status %}
+                    <button class="btn btn-lg btn-primary text-uppercase"
+                       style="background: #FE980F;border: none; " disabled>Sold Out</button>
+                    {% else %}
                     <a href="#myModal1" class="btn btn-lg btn-primary text-uppercase"
-                       style="background: #FE980F;border: none; " data-toggle="modal">{% ifequal 'sell' x.sell %} Buy now{% else %} Rent Now{% endifequal %}</a>
+                       style="background: #FE980F;border: none; " data-toggle="modal">{% ifequal 'sell' x.sell %} Buy
+                        now{% else %} Rent Now{% endifequal %}</a>
                     {% if x.id not in ids %}
                     <a href="/wishlist/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
                        style="background: #dc3545;border: none; font-color:'white'"> <i
@@ -204,7 +211,7 @@ function myFunction(){
                        style="background: #dc3545;border: none; font-color:'white'"> <i
                             class="fa fa-heart"></i> Remove from Wishlist</a>
                     {% endif %}
-
+                    {% endif %}
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->
@@ -227,7 +234,7 @@ function myFunction(){
                     <button class="btn btn-success" onclick="myFunction()"><span>Yes!</span>
                         <i class="material-icons">&#xE5C8;</i></button>
                 </a>-->
-                <a href="/buy/sendrequest/{{x.id}}"  style="text-decoration:none;">
+                <a href="/buy/sendrequest/{{x.id}}" style="text-decoration:none;">
                     <button type="button" class="btn btn-success" onclick="myFunction()"><span>Yes!</span>
                         <i class="material-icons">&#xE5C8;</i></button>
                 </a>
