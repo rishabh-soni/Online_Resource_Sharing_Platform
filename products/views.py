@@ -12,8 +12,8 @@ from django.db.models import Count
 
 def product(request, myid):
     user = request.user
-    pro = Products.objects.filter(id=myid).filter(status=0)
-    wish_list = Wishlist.objects.filter(username=user.username).filter(status=0)
+    pro = Products.objects.filter(id=myid)
+    wish_list = Wishlist.objects.filter(username=user.username)
     ids = list()
     for item in wish_list:
         ids.append(item.pid)
