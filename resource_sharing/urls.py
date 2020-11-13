@@ -44,9 +44,12 @@ urlpatterns = [
     path('profile/edit/password', views.editpassword, name='editpassword'),
     path('sell/', prodviews.sell, name='sell'),
     path('contact-us/', views.contactus, name='contactus'),
+    path('404/', views.error, name='404'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,
                               document_root=settings.MEDIA_ROOT)
+
+handler404 = views.handler404

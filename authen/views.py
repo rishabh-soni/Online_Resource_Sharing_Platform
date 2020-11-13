@@ -8,6 +8,7 @@ from products.models import Wishlist
 from django.core.mail import send_mail
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.template import RequestContext
 
 
 def home(request):
@@ -120,3 +121,14 @@ def contactus(request):
                 form = ContactForm()
                 return render(request, 'contact-us.html', {'form': form})
         return redirect('login')
+
+
+def handler404(request, *args, **argv):
+    response = render(request, '404.html')
+    response.status_code = 404
+    return response
+
+
+def error(request):
+    response = render(request, '404.html')
+    return response
