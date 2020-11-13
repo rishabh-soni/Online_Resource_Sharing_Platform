@@ -421,14 +421,14 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             <div class="col-md-3" style="text-align:center;  border-right: 1px solid grey;"><br>
                 <h5> About Us</h5>
                 <a href="{% url 'aboutus' %}" class="btn-footer"> More Info </a><br>
-                <a href="#" class="btn-footer"> Contact Us</a>
+                <a href="{% url 'contactus' %}" class="btn-footer"> Contact Us</a>
             </div>
             <div class="col-md-3" style="text-align:center;  border-right: 1px solid grey;"><br>
                 <h5> Quick Links</h5>
                 <ul>
                     <li><a href="{% url 'home' %}" class="footer-link"> Home</a></li>
-                    <li><a href="{% url 'aboutus' %}" class="footer-link"> About</a></li>
-                    <li><a href="{% url 'contactus' %}" class="footer-link"> Contact Us</a></li>
+                    <li><a href="{% url 'sell' %}" class="footer-link"> Sell</a></li>
+                    <li><a href="{% url 'wishlist' %}" class="footer-link"> Wishlist</a></li>
                 </ul>
             </div>
 
@@ -448,7 +448,7 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
     </div>
     <br>
     <div class="container text-center">
-        <p class=" text-light mb-0">&copy; Copyrights HoneyComb.com All rights reserved.</p>
+      <!--  <p class=" text-light mb-0">&copy; Copyrights HoneyComb.com All rights reserved.</p>-->
     </div>
 </footer>
 </body>
