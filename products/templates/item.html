@@ -186,7 +186,7 @@ function myFunction(){
         {% if x.status %}
         <span class="num">Sold Out</span>
         {% else %}
-		<span class="currency">₹ </span><span class="num">{{x.price}}</span>
+		<span class="currency">₹ </span><span class="num">{{x.price}} {% if x.sell == 'rent_monthly' %} monthly {% endif %} {% if x.sell == 'rent_weekly' %} weekly {% endif %}</span>
         {% endif %}
 	</span>
                     </p> <!-- price-detail-wrap .// -->
