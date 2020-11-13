@@ -245,17 +245,7 @@ background-color: #e2e8f0;
                                     </div>
                                 </li>
                             </a>
-                            <a href="{% url 'yourorders'%}" style="text-decoration:none;">
-                                <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
-                                    <div class="list-icon">
-                                        <i class="fa fa-shopping-bag"></i>
-                                    </div>
-                                    <div class="list-details">
-                                        <span>Your Orders</span>
-                                    </div>
-                                </li>
-                            </a>
-                            <a href="{% url 'wishlist'%}" style="text-decoration:none;">
+                              <a href="{% url 'wishlist'%}" style="text-decoration:none;">
                                 <li class="list-group-item selected"
                                     style="border:none; background:#fafafa; margin:2px;">
                                     <div class="list-icon">
@@ -266,6 +256,18 @@ background-color: #e2e8f0;
                                     </div>
                                 </li>
                             </a>
+
+                            <a href="{% url 'yourorders'%}" style="text-decoration:none;">
+                                <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
+                                    <div class="list-icon">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>Your Orders</span>
+                                    </div>
+                                </li>
+                            </a>
+
                             <a href="{% url 'yourads'%}" style="text-decoration:none;">
                                 <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
                                     <div class="list-icon">
