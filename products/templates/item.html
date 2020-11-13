@@ -113,7 +113,13 @@ Buy {{x.name}}
 	display: inline-block;
 	margin: 100px auto;
 }
-
+.modal-open{
+  padding:0 !important;
+  overflow-y: auto;
+ }
+body:not(.modal-open){
+  padding-right: 0px !important;
+}
 
 
 
@@ -123,6 +129,7 @@ Buy {{x.name}}
 function myFunction(){
     $("#myModal2").modal();
 }
+
 
 
 
@@ -197,7 +204,26 @@ function myFunction(){
                     </dl>
                     {% if x.status %}
                     <button class="btn btn-lg btn-primary text-uppercase"
-                       style="background: #FE980F;border: none; " disabled>Sold Out</button>
+                            style="background: #FE980F;border: none; " disabled>Sold Out
+                    </button>
+                    {% else %}
+                    {% if x.seller == user.username %}
+                    <a href="/yourads/edit/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
+                       style="background: #FE980F;border: none; "><i
+                            class="fa fa-pencil"></i> Edit AD </a>
+                    <form action="/yourads/{{x.id}}" method="post" style="display:inline">
+                        {% csrf_token %}
+
+                        <button class="btn btn-lg btn-primary text-uppercase"
+                                style="background: #dc3545;border: none; font-color:'white'"><i
+                                class="fa fa-trash"></i> Delete
+                        </button>
+                    </form>
+                    <a href="#myModal{{x.id}}" style="text-decoration: none; " data-toggle="modal">
+                        <button type="submit" class="btn" style="padding:5px 0 0 0;"><i
+                                class="fa fa-trash"></i> Mark as Sold and Delete
+                        </button>
+                    </a>
                     {% else %}
                     <a href="#myModal1" class="btn btn-lg btn-primary text-uppercase"
                        style="background: #FE980F;border: none; " data-toggle="modal">{% ifequal 'sell' x.sell %} Buy
@@ -212,11 +238,44 @@ function myFunction(){
                             class="fa fa-heart"></i> Remove from Wishlist</a>
                     {% endif %}
                     {% endif %}
+                    {% endif %}
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->
     </div> <!-- card.// -->
 </div>
+<div id="myModal{{x.id}}" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header-cart justify-content-center">
+                    <div class="icon-box">
+                        <i class="material-icons">add_shopping_cart</i>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    {% if x.id in prolist %}
+                    <p>Select the user who bought this product:</p>
+                    <form method="post" action="/buy/confirm/{{x.id}}">
+                        {% csrf_token %}
+                        <select id="buyer" name="buyer" class="form-control">
+                            {% for request in requests %}
+                                {% if request.pid == x.id %}
+                                <option value="{{request.buyer}}">{{request.buyer}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-success">Mark as sold</button>
+                    </form>
+                    {% else %}
+                    <p>You have no requests for this product.</p>
+                    {% endif %}
+                    <button class="btn btn-success" data-dismiss="modal"><span>Go Back</span> <i
+                            class="material-icons">&#xE5C8;</i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--container.//-->
 <div id="myModal1" class="modal fade">
     <div class="modal-dialog modal-confirm">
