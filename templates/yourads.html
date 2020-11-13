@@ -125,10 +125,7 @@ Your ADs
     font-size: 1em;
     overflow: hidden;
     padding: 5;
-    border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    margin-top:10px;
+    border: 1;
 }
 
 .carousel-indicators li {
@@ -169,107 +166,230 @@ body:not(.modal-open){
   padding-right: 0px !important;
 }
 
+.card .tab-content{
+	padding: 1rem 0 0 0;
+}
 
+.z-depth-3 {
+    -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
+}
 
+body{
+color: #1a202c;
+text-align: left;
+background-color: #e2e8f0;
+}
+
+.profile-card-4 .user-box {
+    width: 110px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.profile-card-4 .list-icon {
+    display: table-cell;
+    font-size: 30px;
+    padding-right: 20px;
+    vertical-align: middle;
+    color: #3d3d3d;
+}
+
+.profile-card-4 .list-details {
+	display: table-cell;
+	vertical-align: middle;
+    color: #223035;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.profile-card-4 .list-details small{
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: 400;
+    color: #808080;
+}
+
+.list-group-item:hover{
+	color: #fff;
+	background: #f0f0f0 !important;
+}
+.selected{
+	color: #fff;
+	background: #f0f0f0 !important;
+}
 
 
 </style>
 {% endblock head %}
 {% block content %}
-<div class="container py-1">
-    <br>
-    <h2><b>Your ADs</b></h2>
-    <!-- Card Start -->
-    {% for x in product %}
-    {% if x.status == 0 %}
-    <a href="/buy/product/{{x.id}}" style="text-decoration:none; color:#403f3c; font-size:1em;">
-        <div class="card" style="width: 60%;">
-            <div class="row">
-                <div class="col-md-7 px-3">
-                    <div class="card-block px-6">
-                        <article class="card-body p-1">
-                            <h3 class="title mb-3">{{x.name}}</h3>
-                            <p class="price-detail-wrap">
-	<span class="price h3 text-warning">
-        {% if x.status %}
-        <span class="num">Sold Out</span>
-        {% else %}
-		<span class="currency">₹ </span><span class="num">{{x.price}}</span>
-        {% endif %}
-	</span>
-                            </p> <!-- price-detail-wrap .// -->
-                            <dl class="item-property">
-                                <dt>Description</dt>
-                                <dd><p>{{x.description}} </p></dd>
-                            </dl>
-                            <dl class="param param-feature">
-                                <dt>Product Category</dt>
-                                <dd>{{x.category}}</dd>
-                            </dl>  <!-- item-property-hor .// -->
-                            <a href="/yourads/edit/{{x.id}}" class="btn btn-lg btn-primary text-uppercase"
-                               style="background: #FE980F;border: none; "><i
-                                    class="fa fa-pencil"></i> Edit AD </a>
-                            <form action="/yourads/{{x.id}}" method="post" style="display:inline">
-                                {% csrf_token %}
-
-                                <button class="btn btn-lg btn-primary text-uppercase"
-                                        style="background: #dc3545;border: none; font-color:'white'"><i
-                                        class="fa fa-trash"></i> Delete
-                                </button>
-                            </form>
-                            <a href="#myModal{{x.id}}" style="text-decoration: none; " data-toggle="modal">
-                                <button type="submit" class="btn" style="padding:5px 0 0 0;"><i
-                                        class="fa fa-trash"></i> Mark as Sold and Delete
-                                </button>
+<div class="container" style="margin-top:20px;">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="profile-card-4 z-depth-3">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="list-group shadow-none">
+                            <a href="{% url 'profile'%}" style="text-decoration:none;">
+                                <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
+                                    <div class="list-icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>Your Profile</span>
+                                    </div>
+                                </li>
                             </a>
-                        </article>
+                            <a href="{% url 'yourorders'%}" style="text-decoration:none;">
+                                <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
+                                    <div class="list-icon">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>Your Orders</span>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="{% url 'wishlist'%}" style="text-decoration:none;">
+                                <li class="list-group-item" style="border:none; background:#fafafa; margin:2px;">
+                                    <div class="list-icon">
+                                        <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>Your Wishlist</span>
+                                    </div>
+                                </li>
+                            </a>
+                            <a href="{% url 'yourads'%}" style="text-decoration:none;">
+                                <li class="list-group-item selected" style="border:none; background:#fafafa; margin:2px;">
+                                    <div class="list-icon">
+                                        <i class="fa fa-bullhorn"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <span>Your ADs</span>
+
+                                    </div>
+                                </li>
+                            </a>
+                        </ul>
                     </div>
                 </div>
-                <!-- Carousel start -->
-                <div class="col-md-5" style="">
-                    <a href="/buy/product/{{x.id}}">
-                        <img class="d-block" src='/media/{{x.Img1}}' alt=""
-                             style="max-height:300px; height:auto; max-width:300px; position: absolute; top: 50%; transform: translate(-25%, -50%); margin:10px;">
-                    </a>
-                </div>
-                <!-- End of carousel -->
             </div>
         </div>
-    </a>
-    <div id="myModal{{x.id}}" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-                <div class="modal-header-cart justify-content-center">
-                    <div class="icon-box">
-                        <i class="material-icons">add_shopping_cart</i>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body text-center">
-                    {% if x.id in prolist %}
-                    <p>Select the user who bought this product:</p>
-                    <form method="post" action="/buy/confirm/{{x.id}}">
-                        {% csrf_token %}
-                        <select id="buyer" name="buyer" class="form-control">
-                            {% for request in requests %}
-                                {% if request.pid == x.id %}
-                                <option value="{{request.buyer}}">{{request.buyer}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                        <button type="submit" class="btn btn-success">Mark as sold</button>
-                    </form>
+        <div class="col-lg-8">
+            <div class="card z-depth-3">
+                <div class="card-body">
+                    <!-- Card Start -->
+                    {% if product|length == 0 %}
+                    <section>
+                        <div class="container" style="text-align:center; margin-top:20px; padding:60px;">
+                            <img src="/static/images/no-ads.png" style="margin-bottom:20px;">
+                            <h3>No ADs Posted</h3>
+                            <p>You haven't put up any ads. Start adding products!</p>
+                        </div>
+                    </section>
+                    <br>
                     {% else %}
-                    <p>You have no requests for this product.</p>
+                    {% for x in product %}
+                    {% if x.status == 0 %}
+                    <a href="/buy/product/{{x.id}}" style="text-decoration:none; color:#403f3c; font-size:1em;">
+                        <div class="card" style="width: 100%; margin-bottom:10px; border:1; border-radius:0px;">
+                            <div class="row">
+                                <div class="col-md-7 px-3" >
+                                    <div class="card-block px-6">
+                                        <article class="card-body p-1">
+                                            <h3 class="title mb-2">{{x.name}}</h3>
+                                            <p class="price-detail-wrap">
+                                                <span class="price h3 text-warning">
+                                                    {% if x.status %}
+                                                    <span class="num">Sold Out</span>
+                                                    {% else %}
+                                                    <span class="currency">₹ </span><span class="num">{{x.price}}</span>
+                                                    {% endif %}
+                                                </span>
+                                            </p> <!-- price-detail-wrap .// -->
+                                            <dl class="item-property">
+                                                <dt>Description</dt>
+                                                <dd><p>{{x.description}} </p></dd>
+                                            </dl>
+                                            <dl class="param param-feature">
+                                                <dt>Product Category</dt>
+                                                <dd>{{x.category}}</dd>
+                                            </dl>  <!-- item-property-hor .// -->
+                                            <a href="/yourads/edit/{{x.id}}"
+                                               class="btn btn-lg btn-primary text-uppercase"
+                                               style="background: #FE980F;border: none; "><i
+                                                    class="fa fa-pencil"></i> Edit AD </a>
+                                            <form action="/yourads/{{x.id}}" method="post" style="display:inline">
+                                                {% csrf_token %}
+
+                                                <button class="btn btn-lg btn-primary text-uppercase"
+                                                        style="background: #dc3545;border: none; font-color:'white'"><i
+                                                        class="fa fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                            <a href="#myModal{{x.id}}" style="text-decoration: none; "
+                                               data-toggle="modal">
+                                                <button type="submit" class="btn" style="padding:5px 0 0 0;"><i
+                                                        class="fa fa-trash"></i> Mark as Sold and Delete
+                                                </button>
+                                            </a>
+                                        </article>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="">
+                                    <a href="/buy/product/{{x.id}}">
+                                        <img class="d-block" src='/media/{{x.Img1}}' alt=""
+                                             style="max-height:300px; height:auto; max-width:300px; position: absolute; top: 50%; transform: translate(-25%, -50%); margin:10px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div id="myModal{{x.id}}" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                            <div class="modal-content">
+                                <div class="modal-header-cart justify-content-center">
+                                    <div class="icon-box">
+                                        <i class="material-icons">add_shopping_cart</i>
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    {% if x.id in prolist %}
+                                    <p>Select the user who bought this product:</p>
+                                    <form method="post" action="/buy/confirm/{{x.id}}">
+                                        {% csrf_token %}
+                                        <select id="buyer" name="buyer" class="form-control">
+                                            {% for request in requests %}
+                                            {% if request.pid == x.id %}
+                                            <option value="{{request.buyer}}">{{request.buyer}}</option>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                        <button type="submit" class="btn btn-success">Mark as sold</button>
+                                    </form>
+                                    {% else %}
+                                    <p>You have no requests for this product.</p>
+                                    {% endif %}
+                                    <button class="btn btn-success" data-dismiss="modal"><span>Go Back</span> <i
+                                            class="material-icons">&#xE5C8;</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% endif %}
-                    <button class="btn btn-success" data-dismiss="modal"><span>Go Back</span> <i
-                            class="material-icons">&#xE5C8;</i></button>
+                    {% endfor %}
+                    {% endif %}
+
                 </div>
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endfor %}
-</div>
 
+</div>
 {% endblock content %}
