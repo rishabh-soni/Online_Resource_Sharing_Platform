@@ -26,7 +26,7 @@ SECRET_KEY = '$oe-u6-s0$$6yv07%2cyn=f2h!y*dku)e^c%i-n&ko8z3&myp2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'honeycombiiti.pythonanywhere.com']
 
 # Application definition
 
@@ -85,7 +85,7 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
-    }
+    },
 }
 
 # Password validation
@@ -123,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/honeycombiiti/static_files'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',

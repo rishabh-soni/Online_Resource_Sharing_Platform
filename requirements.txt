@@ -3,7 +3,7 @@ Django==3.1.2
 django-dajax==0.9.2
 django-dajaxice==0.7
 django-widget-tweaks==1.4.8
-mysqlclient @ file:///C:/Users/benja/PycharmProjects/Online_Resource_Sharing_Platform/mysqlclient-1.4.6-cp39-cp39-win_amd64.whl
+mysqlclient
 Pillow==8.0.1
 PyMySQL==0.10.1
 python-decouple==3.3
