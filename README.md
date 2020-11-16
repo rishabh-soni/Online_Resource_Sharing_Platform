@@ -4,7 +4,7 @@
 HoneyComb is an interactive platform for buying, selling, and renting any students' resources within the IITI community. The web application's closure to IITI students would provide a better platform for students to share their belongings. Students can sell or rent their notes, books, stationeries, furniture, and much more.
 The project is made using **django** while **MySQL** is used for database management.
 
-Visit our website [here](http://honeycombiiti.pythonanywhere.com) or alternatively by clicking on the link http://honeycombiiti.pythonanywhere.com
+Visit our website [here](https://honeycombiiti.pythonanywhere.com) or alternatively by clicking on the link http://honeycombiiti.pythonanywhere.com
 
 ## Project Requirements (for local hosting)
 * Python 3.8
