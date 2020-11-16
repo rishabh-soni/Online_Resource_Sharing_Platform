@@ -1,5 +1,5 @@
-# ![Unable to load image](https://github.com/rishabh-soni/Online_Resource_Sharing_Platform/blob/master/static/images/logohorizontal.png?raw=true) 
 
+<a href="https://honeycombiiti.pythonanywhere.com"><img alt="![Unable to load image]" src="https://github.com/rishabh-soni/Online_Resource_Sharing_Platform/blob/master/static/images/logohorizontal.png?raw=true"></a>
 ## Online Resource Sharing Platform
 
 HoneyComb is an interactive platform for buying, selling, and renting any students' resources within the IITI community. The web application's closure to IITI students would provide a better platform for students to share their belongings. Students can sell or rent their notes, books, stationeries, furniture, and much more.
@@ -19,3 +19,5 @@ Visit our website [here](https://honeycombiiti.pythonanywhere.com) or alternativ
 * Run the command **python manage.py makemigrations**
 * Run the command **python manage.py migrate**
 * Run the command **python manage.py runserver** and browse the corresponding URL provided.
+* Create a user in MySQL Workbench with the name **dbadmin** and leave the password field blank.
+* Granting all permissions to the user.
