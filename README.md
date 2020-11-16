@@ -19,3 +19,4 @@ Visit our website [here](https://honeycombiiti.pythonanywhere.com) or alternativ
 * Run the command **python manage.py makemigrations**
 * Run the command **python manage.py migrate**
 * Run the command **python manage.py runserver** and browse the corresponding URL provided.
+* Create a user in MySQL workbench with the name **DBadmin** and leave the password field blank.
