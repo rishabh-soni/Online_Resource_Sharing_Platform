@@ -326,15 +326,22 @@ footer {
             color: white;
      }
      footer p, a {
-    font-size: 12px;
+    font-size: 13px;
 
 }
+footer a.text-light:hover { color: #FE980F!important; text-decoration: none; }
+footer .cizgi { border-right: 1px solid #535e67; }
+@media (max-width: 992px) { footer .cizgi { border-right: none; } }
+
+
     </style>
     <script>
 // Prevent dropdown menu from closing when click inside the form
 $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 	e.stopPropagation();
 });
+
+
 
     </script>
 </head>
@@ -368,17 +375,18 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             </div>
             <a href="{% url 'sell' %}"
                class="nav-item nav-link {% if request.path == '/sell/' %} active {% endif %} ">Sell</a>
-             <a href="{% url 'contactus' %}"
+            <a href="{% url 'contactus' %}"
                class="nav-item nav-link {% if request.path == '/contact-us/' %} active {% endif %} ">Contact us</a>
 
         </div>
         <form class="navbar-form form-inline" method="post" action="/buy/search/">
             {% csrf_token %}
             <div class="input-group search-box">
-                <input type="text" id="search" name= "search" class="form-control" placeholder="Search here...">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Search here...">
                 <div class="input-group-append">
 					<span class="input-group-text">
-                        <button type="submit" style="background: none; border: none; color: grey; "><i class="fa fa-search" style="font-size: 15px"></i></button>
+                        <button type="submit" style="background: none; border: none; color: grey; "><i
+                                class="fa fa-search" style="font-size: 15px"></i></button>
 					</span>
                 </div>
             </div>
@@ -403,6 +411,49 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 {% block content %}
 {% endblock content %}
 <br><br>
+<footer>
+    <div class="jumbotron jumbotron-fluid bg-secondary p-4 mt-5 mb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
+                    <div class="card bg-secondary border-0">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-white display-4" style="font-size:25px">Get in Touch</h5>
+                            <a class="text-light d-block lead"  href="{% url 'aboutus' %}"><i
+                                    class="fa fa-info mr-2" style="color:#FE980F;"></i>About Us</a>
+                            <a class="text-light d-block lead" href="{% url 'contactus' %}"><i class="fa fa-envelope mr-2" style="color:#FE980F;"></i>Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
+                    <div class="card bg-secondary border-0">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-white display-4" style="font-size:25px">Follow Us</h5>
+
+                            <a class="text-light" href="#"><i class="fa fa-facebook-square fa-fw fa-2x" style="color:#FE980F;"></i></a>
+
+                            <a class="text-light" href="#"><i class="fa fa-twitter-square fa-fw fa-2x" style="color:#FE980F;"></i></a>
+
+                            <a class="text-light" href="#"><i class="fa fa-instagram fa-fw fa-2x" style="color:#FE980F;"></i></a>
+
+                            <a class="text-light" href="#"><i class="fa fa-linkedin fa-fw fa-2x" style="color:#FE980F;"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 ">
+                    <div class="card bg-secondary border-0">
+                        <div class="" style="text-align:center"><br>
+                            <img src="/static/images/icons/logo_white2.png" style="width:48%; margin-top:-20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--
 <footer class="container-fluid bg-grey py-3">
     <div class="container">
         <div class="row">
@@ -432,17 +483,13 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <a href="#"><i class="fa-footer fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa-footer fa fa-instagram" aria-hidden="true"></i></a>
                 </div>
-                <!--<form class="form-footer my-2">
-                    <input type="text" placeholder="search here..." name="search">
-                    <input type="button" value="Go">
-                </form>-->
             </div>
         </div>
     </div>
     <br>
     <div class="container text-center">
-      <!--  <p class=" text-light mb-0">&copy; Copyrights HoneyComb.com All rights reserved.</p>-->
+         <p class=" text-light mb-0">&copy; Copyrights HoneyComb.com All rights reserved.</p>
     </div>
-</footer>
+</footer>-->
 </body>
 </html>
