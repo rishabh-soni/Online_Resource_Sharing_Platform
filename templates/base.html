@@ -334,12 +334,18 @@ footer .cizgi { border-right: 1px solid #535e67; }
 @media (max-width: 992px) { footer .cizgi { border-right: none; } }
 
 
+
+
+
     </style>
     <script>
 // Prevent dropdown menu from closing when click inside the form
 $(document).on("click", ".action-buttons .dropdown-menu", function(e){
 	e.stopPropagation();
 });
+
+
+
 
 
 
@@ -392,10 +398,12 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
             </div>
         </form>
         <div class="navbar-nav ml-auto ">
+            {% if user.is_authenticated %}
             <div class="navbar-nav">
+
                 <div class="nav-item dropdown">
-                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="">Hi,
-                        {{user.full_name}}</a>
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle" style="">
+                        Hi, {{user.full_name}}</a>
                     <div class="dropdown-menu">
                         <a href="{% url 'profile'%}" class="dropdown-item">Your Profile</a>
                         <a href="{% url 'wishlist'%}" class="dropdown-item">Your Wishlist</a>
@@ -405,6 +413,10 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     </div>
                 </div>
             </div>
+            {% else %}
+            <a href="{% url 'login' %}"
+               class="nav-item nav-link {% if request.path == '/sell/' %} active {% endif %} ">Login/Signup</a>
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -419,9 +431,10 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <div class="card bg-grey border-0">
                         <div class="card-body text-center">
                             <h5 class="card-title text-white display-4" style="font-size:25px">Get in Touch</h5>
-                            <a class="text-light d-block lead"  href="{% url 'aboutus' %}"><i
+                            <a class="text-light d-block lead" href="{% url 'aboutus' %}"><i
                                     class="fa fa-info mr-2" style="color:#FE980F;"></i>About Us</a>
-                            <a class="text-light d-block lead" href="{% url 'contactus' %}"><i class="fa fa-envelope mr-2" style="color:#FE980F;"></i>Contact Us</a>
+                            <a class="text-light d-block lead" href="{% url 'contactus' %}"><i
+                                    class="fa fa-envelope mr-2" style="color:#FE980F;"></i>Contact Us</a>
                         </div>
                     </div>
                 </div>
@@ -430,14 +443,14 @@ $(document).on("click", ".action-buttons .dropdown-menu", function(e){
                     <div class="card bg-grey border-0">
                         <div class="card-body text-center">
                             <h5 class="card-title text-white display-4" style="font-size:25px">Follow Us</h5>
+                            <a href="https://www.youtube.com/watch?v=DX1PoINAlD4&t=707s" target="_blank"><i
+                                    class="fa fa-youtube-square fa-fw fa-2x" style="color:#FE980F;"></i></a>
 
-                            <a class="text-light" href="#"><i class="fa fa-facebook-square fa-fw fa-2x" style="color:#FE980F;"></i></a>
+                            <!--<a class="text-light" href="#"><i class="fa fa-facebook-square fa-fw fa-2x"
+                                                              style="color:#FE980F;"></i></a>
 
-                            <a class="text-light" href="#"><i class="fa fa-twitter-square fa-fw fa-2x" style="color:#FE980F;"></i></a>
-
-                            <a class="text-light" href="#"><i class="fa fa-instagram fa-fw fa-2x" style="color:#FE980F;"></i></a>
-
-                            <a class="text-light" href="#"><i class="fa fa-linkedin fa-fw fa-2x" style="color:#FE980F;"></i></a>
+                            <a class="text-light" href="#"><i class="fa fa-instagram fa-fw fa-2x"
+                                                              style="color:#FE980F;"></i></a>-->
 
                         </div>
                     </div>

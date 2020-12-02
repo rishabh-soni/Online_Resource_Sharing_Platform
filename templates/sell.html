@@ -41,16 +41,20 @@ text-align: left;
 
 
 
+
+
 </style>
 {% endblock head %}
 
 {% block content %}
 {% load i18n widget_tweaks %}
+
 <div style="width: 100%;margin-bottom:20px;"><img src="/static/images/sell_banner.jpg" style="width:100%"></div>
 <div class="container" style="margin-top:20px; align:center;">
     <div class="row">
 
         <div class="col-lg-10">
+             {% if user.is_authenticated %}
             <div class="card z-depth-3">
                 <div class="card-body" style="">
                     <div class="col-lg-12"><h4><i class="fa fa-bullhorn"></i></h4></div>
@@ -58,23 +62,37 @@ text-align: left;
                         {% csrf_token %}
                         <div class="col-lg-12">
                             {% for field in form %}
-                             <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">{{field.label}}</label>
-                                    <div class="col-lg-9">
-                                         {{ field|attr:"class:form-control"}}
-                                    </div>
-                             </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">{{field.label}}</label>
+                                <div class="col-lg-9">
+                                    {{ field|attr:"class:form-control"}}
+                                </div>
+                            </div>
                             {% endfor %}
                         </div>
                         <div class="col-lg-9">
                             <input type="reset" class="btn btn-secondary" value="Cancel">
-                            <input type="submit"  class="btn btn-primary" value="Post AD" style="background: #FE980F; border-color:#FE980F ">
+                            <input type="submit" class="btn btn-primary" value="Post AD"
+                                   style="background: #FE980F; border-color:#FE980F ">
                         </div>
                     </form>
                 </div>
             </div>
+            {% else %}
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 z-depth-3"
+                             style="text-align:center; margin-top:50px; padding:60px;">
+                            <img src="/static/images/no-orders.png" style="">
+                            <h2>You are logged out</h2>
+                            <h4>Login or create account to post an AD...</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endif %}
         </div>
     </div>
 </div>
-
 {% endblock content %}
