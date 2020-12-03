@@ -25,13 +25,30 @@ def home(request):
     return render(request, 'auth/home.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})
 
 
-def signup(request):
+"""def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             sendConfirm(user)
             return render(request, 'link_sent.html', {'username': user.username})
+    else:
+        form = SignUpForm()
+    return render(request, 'auth/signup.html', {'form': form})"""
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('home')
     else:
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})
