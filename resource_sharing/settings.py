@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'authen.apps.AuthenConfig',
     'products.apps.ProductsConfig',
     'widget_tweaks',
+    'django_email_verification',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,14 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+EMAIL_ACTIVE_FIELD = 'is_active'
+EMAIL_SERVER = 'smtp.gmail.com'
+EMAIL_ADDRESS = EMAIL_HOST_USER
+EMAIL_FROM_ADDRESS = EMAIL_HOST_USER
+EMAIL_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_MAIL_HTML = 'mail_body.html'
+EMAIL_MAIL_PLAIN = 'mail_body.txt'
+EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'

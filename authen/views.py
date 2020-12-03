@@ -9,21 +9,20 @@ from django.core.mail import send_mail
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.template import RequestContext
+from django_email_verification import sendConfirm
+from django.contrib.auth import get_user_model
 
 
 def home(request):
     user = request.user
-    if user is not None:
-        if user.is_active:
-            pro = Products.objects.order_by('-id').filter(status=0)[:8]
-            wish_list = Wishlist.objects.filter(username=user.username)
-            ids = list()
-            reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
-            reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
-            for item in wish_list:
-                ids.append(item.pid)
-            return render(request, 'auth/home.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})
-        return redirect('login')
+    pro = Products.objects.order_by('-id').filter(status=0)[:8]
+    wish_list = Wishlist.objects.filter(username=user.username)
+    ids = list()
+    reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
+    reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
+    for item in wish_list:
+        ids.append(item.pid)
+    return render(request, 'auth/home.html', {'products': pro, 'ids': ids, 'reco1': reco1, 'reco2': reco2})
 
 
 def signup(request):
@@ -31,13 +30,9 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.save()
+            sendConfirm(user)
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('home')
+            return render(request, 'link_sent.html')
     else:
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})
@@ -45,10 +40,7 @@ def signup(request):
 
 def aboutus(request):
     user = request.user
-    if user is not None:
-        if user.is_active:
-            return render(request, 'aboutus.html')
-        return redirect('login')
+    return render(request, 'aboutus.html')
 
 
 def profile(request):
@@ -102,25 +94,22 @@ def editpassword(request):
 
 def contactus(request):
     user = request.user
-    if user is not None:
-        if user.is_active:
-            if request.method == 'POST':
-                form = ContactForm(request.POST)
-                if form.is_valid():
-                    name = form.cleaned_data.get("name")
-                    email = form.cleaned_data.get("email")
-                    message = form.cleaned_data.get("message")
-                    subject = form.cleaned_data.get("subject")
-                    message = name + " with the email, " + email + ", sent the following message:\n\n" + message
-                    send_mail(subject, message, 'honeycomb.iiti@gmail.com', ['honeycomb.iiti@gmail.com'])
-                    return redirect('contactus')
-                else:
-                    form = ContactForm()
-                    return redirect('home')
-            else:
-                form = ContactForm()
-                return render(request, 'contact-us.html', {'form': form})
-        return redirect('login')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get("name")
+            email = form.cleaned_data.get("email")
+            message = form.cleaned_data.get("message")
+            subject = form.cleaned_data.get("subject")
+            message = name + " with the email, " + email + ", sent the following message:\n\n" + message
+            send_mail(subject, message, 'honeycomb.iiti@gmail.com', ['honeycomb.iiti@gmail.com'])
+            return redirect('contactus')
+        else:
+            form = ContactForm()
+            return redirect('home')
+    else:
+        form = ContactForm()
+        return render(request, 'contact-us.html', {'form': form})
 
 
 def handler404(request, *args, **argv):

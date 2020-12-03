@@ -9,3 +9,4 @@ PyMySQL==0.10.1
 python-decouple==3.3
 pytz==2020.1
 sqlparse==0.4.1
+django-email-verification

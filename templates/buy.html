@@ -165,12 +165,18 @@ Buy/Rent
                             <div class="choose" style="width:100%; text-align:center;">
                                 <form action="/wishlist/{{x.id}}" method="post" style="display:inline">
                                     {% csrf_token %}
+                                    {% if user.is_authenticated %}
                                     {% if x.id in ids %}
                                     <button type="submit" class="btn"><i
                                             class="fa fa-trash"></i> Remove from wishlist
                                     </button>
                                     {% else %}
                                     <button type="submit" class="btn"><i
+                                            class="fa fa-plus-square"></i> Add to wishlist
+                                    </button>
+                                    {% endif %}
+                                    {% else %}
+                                    <button type="submit" class="btn" disabled><i
                                             class="fa fa-plus-square"></i> Add to wishlist
                                     </button>
                                     {% endif %}

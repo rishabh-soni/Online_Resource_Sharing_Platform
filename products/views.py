@@ -17,10 +17,7 @@ def product(request, myid):
     ids = list()
     for item in wish_list:
         ids.append(item.pid)
-    if user is not None:
-        if user.is_active:
-            return render(request, 'item.html', {'product': pro, 'ids': ids})
-        return redirect('login')
+        return render(request, 'item.html', {'product': pro, 'ids': ids})
 
 
 def create_wishlist(request, pid):
@@ -98,20 +95,16 @@ def editad(request, pid):
 
 def sell(request):
     user = request.user
-    if user is not None:
-        if user.is_active:
-            if request.method == 'POST':
-                form = Item(request.POST, request.FILES)
-                if form.is_valid():
-                    item = form.save()
-                    item.seller = user.username
-                    item.save()
-                    return redirect('sell')
-            else:
-                form = Item()
-                return render(request, 'sell.html', {'form': form})
-
-        return redirect('login')
+    if request.method == 'POST':
+        form = Item(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save()
+            item.seller = user.username
+            item.save()
+            return redirect('sell')
+    else:
+        form = Item()
+        return render(request, 'sell.html', {'form': form})
 
 
 def buy(request, category):
@@ -175,22 +168,19 @@ def confirm(request, pid):
 
 def search(request):
     user = request.user
-    if user is not None:
-        if user.is_active:
-            if request.method == 'POST':
-                search = request.POST['search']
-                result = list()
-                words = search.split()
-                for x in words:
-                    result += Products.objects.filter(name__icontains=x) | Products.objects.filter(
-                        description__icontains=x) | Products.objects.filter(category__icontains=x).filter(status=0)
-                wish_list = Wishlist.objects.filter(username=user.username)
-                ids = list()
-                reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
-                reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
-                for item in wish_list:
-                    ids.append(item.pid)
-                return render(request, 'search.html',
-                              {'products': result, 'ids': ids, 'reco1': reco1, 'reco2': reco2, 'search': search})
-            return render(request, 'search.html')
-        return redirect('login')
+    if request.method == 'POST':
+        search = request.POST['search']
+        result = list()
+        words = search.split()
+        for x in words:
+            result += Products.objects.filter(name__icontains=x) | Products.objects.filter(
+                description__icontains=x) | Products.objects.filter(category__icontains=x).filter(status=0)
+        wish_list = Wishlist.objects.filter(username=user.username)
+        ids = list()
+        reco1 = Products.objects.order_by('-id').filter(status=0)[:3]
+        reco2 = Products.objects.order_by('-id').filter(status=0)[3:6]
+        for item in wish_list:
+            ids.append(item.pid)
+        return render(request, 'search.html',
+                      {'products': result, 'ids': ids, 'reco1': reco1, 'reco2': reco2, 'search': search})
+    return render(request, 'search.html')
