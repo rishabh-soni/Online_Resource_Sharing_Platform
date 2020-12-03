@@ -47,6 +47,7 @@ urlpatterns = [
                   path('contact-us/', views.contactus, name='contactus'),
                   path('404/', views.error, name='404'),
                   path('email/', include(mail_urls)),
+                  path('resend/<slug:username>', views.resend, name='resend'),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

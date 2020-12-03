@@ -31,11 +31,16 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             sendConfirm(user)
-            raw_password = form.cleaned_data.get('password1')
-            return render(request, 'link_sent.html')
+            return render(request, 'link_sent.html', {'username': user.username})
     else:
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})
+
+
+def resend(request, username):
+    user = CustomUser.objects.get(username=username)
+    sendConfirm(user)
+    return render(request, 'link_sent.html', {'username': user.username})
 
 
 def aboutus(request):
