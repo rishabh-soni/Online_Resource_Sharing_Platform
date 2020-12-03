@@ -17,7 +17,7 @@ def product(request, myid):
     ids = list()
     for item in wish_list:
         ids.append(item.pid)
-        return render(request, 'item.html', {'product': pro, 'ids': ids})
+    return render(request, 'item.html', {'product': pro, 'ids': ids})
 
 
 def create_wishlist(request, pid):
