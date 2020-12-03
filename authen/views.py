@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.template import RequestContext
+from django_email_verification import sendConfirm
+from django.contrib.auth import get_user_model
 
 
 def home(request):
@@ -28,13 +30,9 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.save()
+            sendConfirm(user)
             raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('home')
+            return render(request, 'link_sent.html')
     else:
         form = SignUpForm()
     return render(request, 'auth/signup.html', {'form': form})

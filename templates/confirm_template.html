@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+Confirmation
+{% endblock title %}
+{% block head %}
+<style>
+
+.z-depth-3 {
+    -webkit-box-shadow: 0 0px 7px 0 rgba(0,0,0,0.09),0 0px 20px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0px 7px 0 rgba(0,0,0,0.09),0 0px 20px 0 rgba(0,0,0,0.2);
+}
+
+</style>
+{% endblock head %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 z-depth-3"
+                 style="text-align:center; margin-top:50px; padding:60px;">
+                <img src="/static/images/link-sent.png" style="">
+                <h2>Email Confirmation</h2>
+                <h4>{% if success %}
+                    You have confirmed your account! Login <a href="{% url 'login'%}">here.</a>
+                    {% else %}
+                    Error, invalid token!
+                    {% endif %}</h4>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
